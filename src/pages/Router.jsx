@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Filme from "./Filme";
 import Home from "./Home";
 
-// Rotas
+//  Função de Rotas
 export default function AppRoutes() {
   return (
     <BrowserRouter>

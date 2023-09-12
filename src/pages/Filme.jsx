@@ -1,3 +1,4 @@
+// Página responsável por mostrar detalhes do filme e seu trailer
 function Filme() {
   return (
     <>

@@ -1,12 +1,8 @@
 import AppRoutes from "./pages/Router";
 
-//resetei o app com as routas nn sei se ta funfando
+//Função app para retornar as páginas
 function App() {
-  return (
-    <>
-      <AppRoutes />
-    </>
-  );
+  return <AppRoutes />;
 }
 
 export default App;
