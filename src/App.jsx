@@ -6,9 +6,8 @@ import { GlobalStyle } from "./components/GlobalStyle/GlobalStyle";
 function App() {
   return (
     <>
-      <GlobalStyle>
-        <AppRoutes />
-      </GlobalStyle>
+      <GlobalStyle />
+      <AppRoutes />
     </>
   );
 }
