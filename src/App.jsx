@@ -1,15 +1,16 @@
 import AppRoutes from "./pages/Router";
-import { GlobalStyle } from "./globalStyles/styles";
+import { GlobalStyle } from "./components/GlobalStyle/GlobalStyle";
 
 //Função app para retornar as páginas
-//add componente de estilo global, oh yes baby
+//add componente de estilo global
 function App() {
   return (
     <>
-      <AppRoutes />
-      <GlobalStyle />
+      <GlobalStyle>
+        <AppRoutes />
+      </GlobalStyle>
     </>
-  )
+  );
 }
 
 export default App;
