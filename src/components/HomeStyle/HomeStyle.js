@@ -62,6 +62,7 @@ export const MenuOptions = styled.ul`
 export const Hero = styled.main`
   width: 100vw;
   height: 90vh;
+  background: linear-gradient(to right, black, transparent);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -70,22 +71,35 @@ export const Hero = styled.main`
   justify-content: end;
   align-items: left;
   padding-bottom: 4rem;
+  position: relative;
+`;
+
+export const HeroGradientOverlay = styled.div`
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 1), transparent);
 `;
 
 export const DescFilme = styled.section`
   width: 38rem;
   margin-left: 6rem;
   gap: 0.8rem;
+  z-index: 1;
 
   h1 {
-    color: #aaaaaa;
+    color: #ffffff;
     font-size: 4rem;
     font-weight: bold;
     overflow-x: ellipsis;
   }
 
   p {
-    color: #aaaaaa;
+    color: #ffffff;
     font-size: 1.5rem;
     font-weight: 500;
     text-align: justify;
@@ -100,4 +114,22 @@ export const NavBarFilme = styled.nav`
   gap: 1rem;
   margin-left: 6rem;
   margin-top: 3rem;
+  z-index: 1;
+
+  button {
+    border-radius: 50%;
+    padding: 0.8rem;
+    border-style: none;
+    background: rgb(102, 51, 102);
+    background: linear-gradient(
+      rgba(102, 51, 102, 1) 0%,
+      rgba(153, 0, 0, 1) 100%
+    );
+    transition: 0.5s;
+
+    &:hover {
+      cursor: pointer;
+      scale: 1.1;
+    }
+  }
 `;

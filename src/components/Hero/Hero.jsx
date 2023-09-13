@@ -23,6 +23,7 @@ export function Hero() {
   }, []);
   return (
     <S.Hero style={{ backgroundImage: `url('${post_path}${image_path}')` }}>
+      <S.HeroGradientOverlay />
       <S.DescFilme>
         <h1>{title}</h1>
         <p>{overview}</p>
