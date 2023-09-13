@@ -1,8 +1,12 @@
+import { DescricaoFilmeSct } from "../components/DescricaoFilmeSct";
+import { HomeHeader } from "../components/HomeHeader/HomeHeader";
+
 // Página responsável por mostrar detalhes do filme e seu trailer
 function Filme() {
   return (
     <>
-      <h1>filme</h1>
+      <HomeHeader/>
+      <DescricaoFilmeSct/>
     </>
   );
 }
