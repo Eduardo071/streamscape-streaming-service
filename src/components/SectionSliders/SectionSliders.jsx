@@ -1,5 +1,13 @@
 export function SectionSliders(){
     return (
-        <h1>olá</h1>
+        <section>
+            <section>
+                <div>
+                    <h2>Lançamentos</h2>
+                    <h2>Ver todos</h2>
+                </div>
+                
+            </section>
+        </section>
     )
 }

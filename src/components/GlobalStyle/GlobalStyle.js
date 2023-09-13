@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     ::-webkit-scrollbar{
       display: none;
     }
+    font-size: 62.5%;
   }
 
 `;
