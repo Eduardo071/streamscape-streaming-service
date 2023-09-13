@@ -95,7 +95,10 @@ export const DescFilme = styled.section`
     color: #ffffff;
     font-size: 4rem;
     font-weight: bold;
-    overflow-x: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 20ch;
+    white-space: nowrap;
   }
 
   p {
@@ -105,7 +108,24 @@ export const DescFilme = styled.section`
     text-align: justify;
     display: flex;
     align-items: center;
+
+    max-height: 6em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+  }
+
+  h3{
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: justify;
+    display: flex;
+    align-items: center;
     gap: 0.5rem;
+    margin-top: 1.3rem;
   }
 `;
 

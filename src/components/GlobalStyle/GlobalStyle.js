@@ -10,6 +10,10 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     list-style-type: none;
     text-decoration: none;
+    overflow-x: hidden;
+    ::-webkit-scrollbar{
+      display: none;
+    }
   }
 
 `;
