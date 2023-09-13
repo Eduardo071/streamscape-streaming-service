@@ -7,6 +7,5 @@ export const data = async () => {
   );
   const responseData = await response.json();
   const result = responseData.results[0];
-  console.log(result);
   return result;  
 };
