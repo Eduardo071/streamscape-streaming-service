@@ -35,7 +35,7 @@ export function DescricaoFilmeSct() {
           <p>{`${filmeDescricao.faixaEtaria} | ${filmeDescricao.dataDeLançamento} `}</p>
 
           <p className="generos-filme">
-            {filmeDescricao.generos.map(filme => <span>{filme.genero}/</span>)}
+            {filmeDescricao.generos.map((filme, index) => <span key={index}>{filme.genero}/</span>)}
 
             <span></span>
           </p>
