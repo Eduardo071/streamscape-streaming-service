@@ -131,10 +131,13 @@ export const DescFilme = styled.section`
 
 export const NavBarFilme = styled.nav`
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  gap: 0.5rem;
   margin-left: 6rem;
   margin-top: 3rem;
   z-index: 1;
+  height: 5rem;
+  
 
   button {
     border-radius: 50%;
@@ -146,6 +149,9 @@ export const NavBarFilme = styled.nav`
       rgba(153, 0, 0, 1) 100%
     );
     transition: 0.5s;
+    height: 4rem;
+    margin-left: 0.5rem;
+    
 
     &:hover {
       cursor: pointer;
