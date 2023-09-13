@@ -1,0 +1,1 @@
+export const post_path = "https://image.tmdb.org/t/p/original";
