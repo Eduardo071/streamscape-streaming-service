@@ -22,8 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-.eslintrc.json
-.eslintrc.cjs
+eslintrc.json
+eslintrc.cjs
 style-guide.md
 .prettierrc
 API_KEY.js
