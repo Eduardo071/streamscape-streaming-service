@@ -16,16 +16,29 @@ export const InfoFilmeContainer = styled.main`
     justify-content: center;
 
     img{
-      width: 35rem;
+      width: 60rem;
     }
 
     h2{
       color: white;
-      font-size: 2.5rem;
+      font-size: 3.5rem;
     }
   }
 
   section:last-child{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    gap: 3.0rem;
+    width: 60.0rem;
+    margin-left: 2rem;
+    border: 1px solid white;
     margin-top: 2.8rem;
+    font-size: 2.2rem;
+
+    div{
+      font-size: 1.8rem;
+      color: red;
+    }
   }
 `
