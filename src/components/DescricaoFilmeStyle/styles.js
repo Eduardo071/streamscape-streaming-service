@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const InfoFilmeContainer = styled.main`
+export const InfoFilmeContainer = styled.section`
   color: white;
   background: #000000;
   padding: 2rem;
@@ -91,3 +91,49 @@ export const InfoFilmeContainer = styled.main`
     }
   }
 `
+
+export const MidiaFilmeContainer = styled.section`
+  padding: 0 4rem;
+  min-height: 500px;
+  background-color: #191919;
+  color: #fff;
+  p, div, span{
+    font-size: 1.6rem;
+  }
+
+  .midiaFilme{
+    margin: 9rem auto;
+    
+    header{
+      display: flex;
+      gap: 1.6rem;
+
+      p{
+        border-top: 2px solid transparent;
+        border-bottom: 2px solid transparent;
+        display: flex;
+        align-items: center;
+        font-size: 1.78rem;
+        cursor: pointer;
+
+        &:hover{
+          border-bottom-color: #B9B9B9 ;
+        }
+      }
+    }
+
+    .videos-fotos{
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      column-gap: 8px;
+
+      img{
+       max-width: 100%;
+        height: 30.0rem;
+        object-fit: cover;
+        border-radius: 4px;
+      }
+    }
+  }
+` 
