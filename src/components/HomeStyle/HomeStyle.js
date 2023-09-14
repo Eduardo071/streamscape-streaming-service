@@ -6,7 +6,7 @@ export const Background = styled.div`
   width: 100vw;
   min-height: 100vh;
   height: auto;
-  background-color: #000000;
+  background-color: #1a1a1a;
 `;
 
 export const Header = styled.header`
@@ -158,5 +158,69 @@ export const NavBarFilme = styled.nav`
       cursor: pointer;
       scale: 1.1;
     }
+  }
+`;
+
+export const Container = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem 0;
+  width: 100vw;
+  min-height: 100vh;
+  height: auto;
+`;
+
+export const ContainerUpcoming = styled.section`
+  display: flex;
+  flex-direction: column;
+  width: 95vw;
+  gap: 1rem;
+`;
+
+export const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  width: 87vw;
+  margin-right: 1.5vw;
+  h2 {
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+`;
+
+export const ContainerGlider = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  svg {
+    transition: 0.4s;
+    &:hover {
+      cursor: pointer;
+      scale: 1.05;
+    }
+  }
+`;
+
+export const CardMovie = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-right: 2rem;
+  align-self: baseline;
+  transition: 0.3s;
+
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &:hover {
+    cursor: pointer;
+    scale: 1.02;
   }
 `;
