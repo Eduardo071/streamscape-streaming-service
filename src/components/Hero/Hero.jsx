@@ -4,6 +4,7 @@ import { post_path } from "../../variables/variables";
 import * as S from "../HomeStyle/HomeStyle";
 import { Play, Plus, Star } from "phosphor-react";
 import { movie_data } from "../../api/movie_details";
+import { NavLink } from "react-router-dom";
 
 export function Hero() {
   const [image_path, setImage_path] = useState("");
@@ -50,7 +51,9 @@ export function Hero() {
       </S.DescFilme>
       <S.NavBarFilme>
         <button>
-          <Play size={32} color="#fcfcfc" />
+          <NavLink to="/titulo-do-filme">
+            <Play size={32} color="#fcfcfc" />
+          </NavLink>
         </button>
         <button>
           <Plus size={32} color="#fcfcfc" weight="bold" />
