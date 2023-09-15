@@ -1,9 +1,11 @@
 import { useState } from "react";
 import {
+  AvaliacaoContainer,
   InfoFilmeContainer,
   MidiaFilmeContainer,
 } from "../DescricaoFilmeStyle/styles";
 import { FilmeMidia } from "../FilmeMidia";
+import { Star } from 'phosphor-react'
 
 export function DescricaoFilmeSct() {
 
@@ -89,14 +91,27 @@ export function DescricaoFilmeSct() {
       </InfoFilmeContainer>
 
       <MidiaFilmeContainer>
-        <div className="midiaFilme">
+        <section className="filmes-fotos-videos">
           <header>
             <button onClick={() => setValorClicadoMidia('videos')} name="video">Videos</button>
             <button onClick={() => setValorClicadoMidia('fotos')} name="fotos">Photos</button>
           </header>
 
-          <FilmeMidia click={valorClicadoMidia}/>
-        </div>
+          <FilmeMidia click={valorClicadoMidia} />
+        </section>
+
+        <AvaliacaoContainer>
+          <div>
+            <Star size={18} color="#a79520" weight="fill" />
+            <span>7,0</span>
+            |
+
+            <Star size={18} className="star"/>
+            <span> rate this</span>    
+          </div>
+
+
+        </AvaliacaoContainer>
       </MidiaFilmeContainer>
     </>
   );

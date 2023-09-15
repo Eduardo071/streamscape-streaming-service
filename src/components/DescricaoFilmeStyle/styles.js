@@ -101,7 +101,7 @@ export const MidiaFilmeContainer = styled.section`
     font-size: 1.6rem;
   }
 
-  .midiaFilme{
+  .filmes-fotos-videos{
     margin: 9rem auto;
     
     header{
@@ -125,4 +125,32 @@ export const MidiaFilmeContainer = styled.section`
       }
     }
   }
-` 
+`
+
+export const AvaliacaoContainer = styled.section`
+padding-bottom: 3rem;
+  display: flex;
+  justify-content: space-between;
+
+  div:first-child{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    span{
+      font-size: 1.6rem;
+      opacity: 0.9;
+    }
+    
+    .star{
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .star:hover{
+     transform: scale(1.1);
+      color: #a79520;
+    }
+  }
+`
