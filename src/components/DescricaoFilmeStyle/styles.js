@@ -128,7 +128,7 @@ export const MidiaFilmeContainer = styled.section`
 `
 
 export const AvaliacaoContainer = styled.section`
-padding-bottom: 3rem;
+  padding-bottom: 3rem;
   display: flex;
   justify-content: space-between;
 
@@ -150,6 +150,23 @@ padding-bottom: 3rem;
 
     .star:hover{
      transform: scale(1.1);
+      color: #a79520;
+    }
+  }
+
+  .watchLater{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    svg{
+      cursor: pointer;
+      transition: all 0.1s;
+    }
+
+    svg:hover{
+      transform: scale(1.1);
+      font-weight: 900;
       color: #a79520;
     }
   }

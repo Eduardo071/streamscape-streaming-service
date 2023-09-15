@@ -5,7 +5,7 @@ import {
   MidiaFilmeContainer,
 } from "../DescricaoFilmeStyle/styles";
 import { FilmeMidia } from "../FilmeMidia";
-import { Star } from 'phosphor-react'
+import { BookmarkSimple, Star } from 'phosphor-react'
 
 export function DescricaoFilmeSct() {
 
@@ -110,7 +110,9 @@ export function DescricaoFilmeSct() {
             <span> rate this</span>    
           </div>
 
-
+          <span className="watchLater">Wath Later
+          <BookmarkSimple size={22} weight="bold" className="bookmark"/>
+          </span>
         </AvaliacaoContainer>
       </MidiaFilmeContainer>
     </>
