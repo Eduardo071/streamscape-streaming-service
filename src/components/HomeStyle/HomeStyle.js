@@ -14,8 +14,6 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0 4rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
   width: 100vw;
   height: 10vh;
   background-color: #191919;
@@ -75,6 +73,15 @@ export const Hero = styled.main`
   align-items: left;
   padding-bottom: 10rem;
   position: relative;
+  animation: fade 1s linear;
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }to {
+      opacity: 1;
+    }
+  }
 `;
 
 export const HeroGradientOverlay = styled.div`
@@ -169,9 +176,10 @@ export const Container = styled.section`
   width: 100vw;
   min-height: 100vh;
   height: auto;
+  gap: 5rem;
 `;
 
-export const ContainerUpcoming = styled.section`
+export const ContainerSection = styled.section`
   display: flex;
   flex-direction: column;
   width: 95vw;
@@ -198,6 +206,7 @@ export const ContainerGlider = styled.div`
   gap: 2rem;
   svg {
     transition: 0.4s;
+    margin-bottom: 10rem;
     &:hover {
       cursor: pointer;
       scale: 1.05;
