@@ -5,7 +5,6 @@ import * as S from "../HomeStyle/HomeStyle";
 import { Play, Plus, Star } from "phosphor-react";
 import { movie_data } from "../../api/movie_details";
 import { NavLink } from "react-router-dom";
-import "swiper/css/bundle";
 
 export function Hero() {
   const [movies, setMovies] = useState([]);

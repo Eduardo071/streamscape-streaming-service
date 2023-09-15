@@ -1,9 +1,12 @@
+import { useState } from "react";
 import {
   InfoFilmeContainer,
   MidiaFilmeContainer,
 } from "../DescricaoFilmeStyle/styles";
+import { FilmeMidia } from "../FilmeMidia";
 
 export function DescricaoFilmeSct() {
+
   const filmeDescricao = {
     poster:
       "https://4kwallpapers.com/images/wallpapers/oppenheimer-8k-2023-2560x2560-12220.jpg",
@@ -29,6 +32,9 @@ export function DescricaoFilmeSct() {
     language: "Inglês e Português ",
   };
 
+  const [valorClicadoMidia, setValorClicadoMidia] = useState('videos')
+
+  console.log(valorClicadoMidia)
   return (
     <>
       <InfoFilmeContainer>
@@ -85,24 +91,11 @@ export function DescricaoFilmeSct() {
       <MidiaFilmeContainer>
         <div className="midiaFilme">
           <header>
-            <p>Videos</p>
-            <p>Photos</p>
+            <button onClick={() => setValorClicadoMidia('videos')} name="video">Videos</button>
+            <button onClick={() => setValorClicadoMidia('fotos')} name="fotos">Photos</button>
           </header>
 
-          <div className="videos-fotos">
-            <img
-              src="https://i.em.com.br/xW6rpQ3v97cZcPDuzWha4hYqEb4=/750x0/smart/imgsapp.em.com.br/app/noticia_127983242361/2023/07/20/1522235/o-ator-cillian-murphy-como-oppenheimer_1_41372.jpg"
-              alt=""
-            />
-            <img
-              src="https://musicaecinema.com/wp-content/uploads/2023/07/oppenheimer.png"
-              alt=""
-            />
-            <img
-              src="https://www.thelantern.com/files/2023/07/ENTER-OPPENHEIMER-MOVIE-REVIEW-2-MCT.jpg"
-              alt=""
-            />
-          </div>
+          <FilmeMidia click={valorClicadoMidia}/>
         </div>
       </MidiaFilmeContainer>
     </>
