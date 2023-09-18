@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { data } from "../../api/request_data";
 import { post_path } from "../../variables/variables";
 import * as S from "../HomeStyle/HomeStyle";
-import { Play, Plus, Star } from "phosphor-react";
+import { Play, Plus } from "phosphor-react";
 import { movie_data } from "../../api/movie_details";
 import { NavLink } from "react-router-dom";
 
@@ -67,7 +67,7 @@ export function Hero() {
             <h1>{movie.title}</h1>
             <p>{movie.overview}</p>
             <h3>
-              <Star size={32} color="#fcfcfc" weight="fill" />
+              <span className="imdb">IMBD </span>
               {movie.vote_average.toFixed(1)} | {movie.release_date} |{" "}
               {runtimes[index] ? `${runtimes[index]} min` : "Carregando..."}
             </h3>
