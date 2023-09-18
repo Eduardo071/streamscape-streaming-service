@@ -67,7 +67,7 @@ export function Hero() {
             <h1>{movie.title}</h1>
             <p>{movie.overview}</p>
             <h3>
-              <span className="imdb">IMBD </span>
+              <S.ImdbLogo >IMBD </S.ImdbLogo>
               {movie.vote_average.toFixed(1)} | {movie.release_date} |{" "}
               {runtimes[index] ? `${runtimes[index]} min` : "Carregando..."}
             </h3>

@@ -84,6 +84,15 @@ export const Hero = styled.main`
     }
   }
 `;
+export const ImdbLogo = styled.span`
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 2px;
+  border-radius: 2px;
+  margin-left: 12px;
+  border: 1px solid #fff;
+  color: #fff;
+`;
 
 export const HeroGradientOverlay = styled.div`
   content: "";
