@@ -114,7 +114,10 @@ export function DescricaoFilmeSct() {
           <BookmarkSimple size={22} weight="bold" className="bookmark"/>
           </span>
         </AvaliacaoContainer>
+
+        <iframe className="trailer" src="https://www.youtube.com/embed/F3OxA9Cz17A?si=7xC9b4qoGtYOADMs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </MidiaFilmeContainer>
+
     </>
   );
 }

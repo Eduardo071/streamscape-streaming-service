@@ -95,6 +95,9 @@ export const InfoFilmeContainer = styled.section`
 export const MidiaFilmeContainer = styled.section`
   padding: 0 4rem;
   min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #191919;
   color: #fff;
   button, div, span{
@@ -125,10 +128,18 @@ export const MidiaFilmeContainer = styled.section`
       }
     }
   }
+
+  .trailer{
+    border-radius: 16px;
+    margin-top: 8rem;
+    width: 110rem;
+    height: 70rem;
+  }
 `
 
 export const AvaliacaoContainer = styled.section`
   padding-bottom: 3rem;
+  align-self: flex-start;
   display: flex;
   justify-content: space-between;
 
@@ -171,3 +182,4 @@ export const AvaliacaoContainer = styled.section`
     }
   }
 `
+
