@@ -10,6 +10,10 @@ export const Background = styled.div`
 `;
 
 export const Header = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -61,6 +65,7 @@ export const MenuOptions = styled.ul`
 `;
 
 export const Hero = styled.main`
+  margin-top: 10vh;
   width: 100vw;
   height: 90vh;
   background: linear-gradient(to right, black, transparent);
@@ -86,8 +91,8 @@ export const Hero = styled.main`
 `;
 export const ImdbLogo = styled.span`
   font-weight: 700;
-  font-size: 1.2rem;
-  padding: 2px;
+  font-size: 1.5rem;
+  padding: 0.2rem;
   border-radius: 2px;
   margin-left: 12px;
   border: 1px solid #fff;
@@ -298,7 +303,7 @@ export const ContainerOfferText = styled.div`
 `;
 
 export const ContainerFooter = styled.footer`
-  margin-top: 20rem;
+  margin-top: 10rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
