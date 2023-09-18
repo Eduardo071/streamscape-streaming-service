@@ -78,7 +78,8 @@ export const Hero = styled.main`
   @keyframes fade {
     from {
       opacity: 0;
-    }to {
+    }
+    to {
       opacity: 1;
     }
   }
@@ -231,5 +232,88 @@ export const CardMovie = styled.div`
   &:hover {
     cursor: pointer;
     scale: 1.02;
+  }
+`;
+
+export const OfferSection = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  gap: 1.8rem;
+
+  img {
+    width: 35rem;
+  }
+`;
+
+export const ContainerOfferText = styled.div`
+  width: 44rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  p {
+    font-size: 1.8rem;
+    text-align: justify;
+    color: #fff;
+  }
+
+  button {
+    padding: 1rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    border: none;
+    transition: 0.6s;
+    background: rgb(102, 51, 102);
+    background: linear-gradient(
+      rgba(102, 51, 102, 1) 0%,
+      rgba(153, 0, 0, 1) 100%
+    );
+
+    &:hover {
+      cursor: pointer;
+      scale: 1.1;
+    }
+  }
+`;
+
+export const ContainerFooter = styled.footer`
+  margin-top: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 54vw;
+  h2 {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 1.8rem;
+    color: #fff;
+    opacity: 0.5;
+    font-weight: 700;
+  }
+
+  ul {
+    display: flex;
+    gap: 1rem;
+    li {
+      transition: 0.3s;
+      opacity: 0.5;
+      &:hover {
+        cursor: pointer;
+        scale: 1.1;
+      }
+    }
   }
 `;
