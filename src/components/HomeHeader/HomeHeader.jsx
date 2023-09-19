@@ -11,10 +11,10 @@ export function HomeHeader() {
         <S.Logo src={logo} alt="logo streamscape" />
       </NavLink>
       <S.NavBar>
-        <a href="">Movies</a>
-        <a href="">Animations</a>
-        <a href="">Series</a>
-        <a href="">Collections</a>
+        <a href="">Filmes</a>
+        <a href="">Animações</a>
+        <a href="">Séries</a>
+        <a href="">Coleções</a>
       </S.NavBar>
       <S.MenuOptions>
         <li>
