@@ -4,13 +4,13 @@ import { Container } from "../PlanosStyle/style";
 export function HeroPlanos() {
   return (
     <Container>
-      <h3> Choose Your Plan</h3>
+      <h3> Escolha Seu Plano</h3>
       <ul>
         <li>
           <header>
-            <p>1 <span>month</span></p>
+            <p>Basic</p>
             <span>/</span>
-            <p>10$</p>
+            <p>R$14,90</p>
           </header>
 
           <section>
@@ -24,9 +24,9 @@ export function HeroPlanos() {
 
         <li>
           <header>
-            <p>3 <span>month</span></p>
+            <p>Normal</p>
             <span>/</span>
-            <p>19$</p>
+            <p>R$50,00</p>
           </header>
 
           <section>
@@ -40,9 +40,9 @@ export function HeroPlanos() {
 
         <li>
           <header>
-            <p>12 <span>month</span></p>
+            <p>Plus</p>
             <span>/</span>
-            <p>30$</p>
+            <p>R$119,00</p>
           </header>
 
           <section>

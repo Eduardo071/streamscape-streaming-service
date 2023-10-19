@@ -40,20 +40,23 @@ export const Container = styled.div`
           font-size: 1.6rem;
         }
 
-        p:first-child{
+        width: 100%;
+        background: red;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        margin-right: 9rem;
-        font-size: 4rem;
-        font-weight: 700;
+        gap: 8px;
 
-        span{
-          display: block;
-          margin: 0;
-          font-size: 1.8rem;
-        }
+        /* p:first-child{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-right: 10rem;
+        font-size: 2.6rem;
+        font-weight: 700;
+        margin-bottom: 30px;
         } 
       
         span{
@@ -64,9 +67,9 @@ export const Container = styled.div`
         }
 
         p:last-child{
-          margin-left: 11rem;
+          margin-left: 9rem;
           font-size: 2.2rem;
-        }
+        } */
       }
 
       
