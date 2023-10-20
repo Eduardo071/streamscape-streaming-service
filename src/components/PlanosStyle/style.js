@@ -41,47 +41,19 @@ export const Container = styled.div`
         }
 
         width: 100%;
-        background: red;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
         gap: 8px;
-
-        /* p:first-child{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        margin-right: 10rem;
-        font-size: 2.6rem;
-        font-weight: 700;
-        margin-bottom: 30px;
-        } 
-      
-        span{
-          margin-left: 8rem;
-          margin-top: -20px;
-          font-size: 4rem;
-          display: block;
-        }
-
-        p:last-child{
-          margin-left: 9rem;
-          font-size: 2.2rem;
-        } */
       }
 
       
     }
   }
-
-
-
-
-
   p, h3, span{
     font-size: 1.6rem;
+    text-align: justify;
     color: #fff;
   }
 `
