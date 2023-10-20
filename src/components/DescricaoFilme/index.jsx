@@ -32,31 +32,7 @@ export function DescricaoFilmeSct() {
     };
     requestApiMovieId();
   }, [movie, idMovie]);
-  const filmeDescricao = {
-    poster:
-      "https://4kwallpapers.com/images/wallpapers/oppenheimer-8k-2023-2560x2560-12220.jpg",
-    tituloDoFilme: "Oppenheimer",
-    resumoDoFilme:
-      " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero cum maxime recusandae dicta, ut, doloribus dignissimos minima eius qui molestias iusto minus quidem et corporis distinctio quaerat a inventore debit  quidem et corporis distinctio quaerat a inventore debit  quidem et corporis distinctio quaerat a inventore debit  quidem et corporis distinctio quaerat a inventore debit",
-    faixaEtaria: 18,
-    dataDeLançamento: "2023 / 07/ 20",
-    generos: [
-      { genero: "historia" },
-      { genero: "drama" },
-      { genero: "suspense" },
-      { genero: "misterio" },
-    ],
-    nota: 8.6,
-    criador: "Christopher Nolan",
-    elenco: [
-      { nome: "Cillian Murphy" },
-      { nome: "Emily Blunt" },
-      { nome: "Matt Damon" },
-    ],
-    pais: "USA",
-    language: "Inglês e Português ",
-  };
-
+  
   const [valorClicadoMidia, setValorClicadoMidia] = useState("videos");
 
   return (
