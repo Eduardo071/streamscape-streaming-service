@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import Glider from "react-glider";
 import "glider-js/glider.min.css";
 import { upcoming } from "../../api/upcoming_film";
@@ -71,6 +72,7 @@ export function SectionSliders() {
     };
     data();
   }, []);
+
   return (
     <S.Container>
       {/* Movies upcoming */}
@@ -97,15 +99,17 @@ export function SectionSliders() {
             }}
           >
             {lancamentoFilme.map((movie, index) => (
-              <S.CardMovie key={index}>
-                <img
-                  src={`${post_path}${movie.poster_path}`}
-                  alt="poster do filme"
-                />
-                <h1>
-                  {movie.title} ({movie.release_date.split("-")[0]})
-                </h1>
-              </S.CardMovie>
+              <Link key={index} to={`/${movie.id}`}>
+                <S.CardMovie>
+                  <img
+                    src={`${post_path}${movie.poster_path}`}
+                    alt="poster do filme"
+                  />
+                  <h1>
+                    {movie.title} ({movie.release_date.split("-")[0]})
+                  </h1>
+                </S.CardMovie>
+              </Link>
             ))}
           </Glider>
 
@@ -141,15 +145,17 @@ export function SectionSliders() {
             }}
           >
             {lancamentoSerie.map((serie, index) => (
-              <S.CardMovie key={index}>
-                <img
-                  src={`${post_path}${serie.poster_path}`}
-                  alt="poster da série"
-                />
-                <h1>
-                  {serie.name} ({serie.first_air_date.split("-")[0]})
-                </h1>
-              </S.CardMovie>
+              <Link key={index} to={`/${serie.id}`}>
+                <S.CardMovie>
+                  <img
+                    src={`${post_path}${serie.poster_path}`}
+                    alt="poster da série"
+                  />
+                  <h1>
+                    {serie.name} ({serie.first_air_date.split("-")[0]})
+                  </h1>
+                </S.CardMovie>
+              </Link>
             ))}
           </Glider>
 
@@ -185,7 +191,8 @@ export function SectionSliders() {
             }}
           >
             {melhoresFilmes.map((movie, index) => (
-              <S.CardMovie key={index}>
+              <Link to={`/${movie.id}`} key={index}>
+              <S.CardMovie>
                 <img
                   src={`${post_path}${movie.poster_path}`}
                   alt="poster do filme"
@@ -194,6 +201,7 @@ export function SectionSliders() {
                   {movie.title} ({movie.release_date.split("-")[0]})
                 </h1>
               </S.CardMovie>
+              </Link>
             ))}
           </Glider>
 
@@ -229,7 +237,8 @@ export function SectionSliders() {
             }}
           >
             {popularFilme.map((movie, index) => (
-              <S.CardMovie key={index}>
+              <Link key={index} to={`/${movie.id}`}>
+              <S.CardMovie>
                 <img
                   src={`${post_path}${movie.poster_path}`}
                   alt="poster do filme"
@@ -238,6 +247,7 @@ export function SectionSliders() {
                   {movie.title} ({movie.release_date.split("-")[0]})
                 </h1>
               </S.CardMovie>
+              </Link>
             ))}
           </Glider>
 
@@ -248,8 +258,6 @@ export function SectionSliders() {
           />
         </S.ContainerGlider>
       </S.ContainerSection>
-
-
 
       {/* Movies on Theatres */}
 
@@ -275,7 +283,8 @@ export function SectionSliders() {
             }}
           >
             {filmesCinema.map((movie, index) => (
-              <S.CardMovie key={index}>
+              <Link key={index} to={`/${movie.id}`}>
+              <S.CardMovie>
                 <img
                   src={`${post_path}${movie.poster_path}`}
                   alt="poster do filme"
@@ -284,6 +293,7 @@ export function SectionSliders() {
                   {movie.title} ({movie.release_date.split("-")[0]})
                 </h1>
               </S.CardMovie>
+              </Link>
             ))}
           </Glider>
 
