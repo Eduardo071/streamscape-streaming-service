@@ -28,7 +28,7 @@ export function HeroPlanos() {
           </footer>
         </li>
 
-        <li>
+        <li className="plus"  >
           <header>
             <p style={{
               width: "180px",

@@ -4,6 +4,7 @@ export const InfoFilmeContainer = styled.section`
   color: white;
   background: #000000;
   padding: 2rem;
+  margin-top: 7.5rem;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -14,9 +15,11 @@ export const InfoFilmeContainer = styled.section`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 1rem;
+    
 
     img{
-      width: 60rem;
+      width: 80rem;
     }
 
     h2{

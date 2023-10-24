@@ -11,7 +11,7 @@ export default function AppRoutes() {
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route exact path="/home" element={<Home />} />
-        <Route exact path="/titulo-do-filme" element={<Filme />} />
+        <Route exact path="/:idMovie" element={<Filme />} />
         <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/planos" element={<Planos />} />
       </Routes>

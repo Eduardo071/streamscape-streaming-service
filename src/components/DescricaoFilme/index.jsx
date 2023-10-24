@@ -1,90 +1,107 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   AvaliacaoContainer,
   InfoFilmeContainer,
   MidiaFilmeContainer,
 } from "../DescricaoFilmeStyle/styles";
 import { FilmeMidia } from "../FilmeMidia";
-import { BookmarkSimple, Star } from 'phosphor-react'
+import { BookmarkSimple, Star } from "phosphor-react";
+import { useParams } from "react-router-dom";
+import {
+  paramsBase,
+  post_path,
+  urlMovieSearchById,
+} from "../../variables/variables";
 
 export function DescricaoFilmeSct() {
+  const [movie, setMovie] = useState([]);
+  const [movieGenres, setMovieGenres] = useState([]);
+  const [movieCreators, setMovieCreators] = useState([]);
+  const [dublagemDisponiveis, setDublagemDisponiveis] = useState([]);
+  const { idMovie } = useParams();
+  useEffect(() => {
+    const requestApiMovieId = async () => {
+      const response = await fetch(
+        `${urlMovieSearchById}/${idMovie}${paramsBase}`,
+      );
+      const data = await response.json();
+      setMovie(data);
+      setMovieGenres(data.genres);
+      setMovieCreators(data.production_companies);
+      setDublagemDisponiveis(data.spoken_languages);
+    };
+    requestApiMovieId();
+  }, [movie, idMovie]);
+  
+  const [valorClicadoMidia, setValorClicadoMidia] = useState("videos");
 
-  const filmeDescricao = {
-    poster:
-      "https://4kwallpapers.com/images/wallpapers/oppenheimer-8k-2023-2560x2560-12220.jpg",
-    tituloDoFilme: "Oppenheimer",
-    resumoDoFilme:
-      " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero cum maxime recusandae dicta, ut, doloribus dignissimos minima eius qui molestias iusto minus quidem et corporis distinctio quaerat a inventore debit  quidem et corporis distinctio quaerat a inventore debit  quidem et corporis distinctio quaerat a inventore debit  quidem et corporis distinctio quaerat a inventore debit",
-    faixaEtaria: 18,
-    dataDeLançamento: "2023 / 07/ 20",
-    generos: [
-      { genero: "historia" },
-      { genero: "drama" },
-      { genero: "suspense" },
-      { genero: "misterio" },
-    ],
-    nota: 8.6,
-    criador: "Christopher Nolan",
-    elenco: [
-      { nome: "Cillian Murphy" },
-      { nome: "Emily Blunt" },
-      { nome: "Matt Damon" },
-    ],
-    pais: "USA",
-    language: "Inglês e Português ",
-  };
-
-  const [valorClicadoMidia, setValorClicadoMidia] = useState('videos')
-
-  console.log(valorClicadoMidia)
   return (
     <>
       <InfoFilmeContainer>
         <section>
-          <img src={filmeDescricao.poster} alt="poster oficial do filme" />
+          <img
+            src={`${post_path}${movie.backdrop_path}`}
+            alt="poster oficial do filme"
+          />
 
-          <h2>{filmeDescricao.tituloDoFilme}</h2>
+          <h2>{movie.title}</h2>
         </section>
 
         <section>
-          <p>{filmeDescricao.resumoDoFilme}</p>
+          <p>{movie.overview}</p>
 
           <div className="info-filme">
-            <p>{`${filmeDescricao.faixaEtaria}+ |  ${filmeDescricao.dataDeLançamento} `}</p>
+            <p>
+              {movie.adult
+                ? "Classificação adulta"
+                : "Classificação não adulta"}{" "}
+              | {movie.release_date}
+            </p>
 
             <p className="generos-filme">
-              {filmeDescricao.generos.map((filme, index) => (
-                <span key={index}>{filme.genero}/</span>
+              {movieGenres.map((genre, index) => (
+                <span key={index}>
+                  {index !== movieGenres.length - 1
+                    ? `${genre.name}|`
+                    : `${genre.name}`}
+                </span>
               ))}
 
               <p className="imdb">
                 <span>IMBD </span>
-                <span>{filmeDescricao.nota}</span>
+                <span>{movie.vote_average}</span>
               </p>
             </p>
           </div>
 
           <div className="info-producao">
             <p>
-              Creator:
-              <span>{filmeDescricao.criador}</span>
+              Companias de produção:
+              {movieCreators.map((creator, index) => (
+                <span key={index}>
+                  {index !== movieCreators.length - 1
+                    ? `${creator.name},`
+                    : `${creator.name}`}
+                </span>
+              ))}
             </p>
 
+            <p>Contagem de votos: <span>{movie.vote_count}</span></p>
+
             <p>
-              Stars:
-              {filmeDescricao.elenco.map((autor, index) => (
-                <span key={index}>{autor.nome}</span>
+              Linguagens disponíveis:
+              {dublagemDisponiveis.map((dub, index) => (
+                <span key={index}>
+                  {index !== dublagemDisponiveis.length - 1
+                    ? `${dub.name},`
+                    : `${dub.name}`}
+                </span>
               ))}
             </p>
 
             <p>
-              country:
-              <span>{filmeDescricao.pais}</span>
-            </p>
-
-            <p>
-              language:
-              <span>{filmeDescricao.language}</span>
+              Tempo de duração:
+              <span>{movie.runtime} minutos</span>
             </p>
           </div>
         </section>
@@ -93,8 +110,12 @@ export function DescricaoFilmeSct() {
       <MidiaFilmeContainer>
         <section className="filmes-fotos-videos">
           <header>
-            <button onClick={() => setValorClicadoMidia('videos')} name="video">Videos</button>
-            <button onClick={() => setValorClicadoMidia('fotos')} name="fotos">Photos</button>
+            <button onClick={() => setValorClicadoMidia("videos")} name="video">
+              Videos
+            </button>
+            <button onClick={() => setValorClicadoMidia("fotos")} name="fotos">
+              Photos
+            </button>
           </header>
 
           <FilmeMidia click={valorClicadoMidia} />
@@ -105,19 +126,25 @@ export function DescricaoFilmeSct() {
             <Star size={18} color="#a79520" weight="fill" />
             <span>7,0</span>
             |
-
-            <Star size={18} className="star"/>
-            <span> rate this</span>    
+            <Star size={18} className="star" />
+            <span> rate this</span>
           </div>
 
-          <span className="watchLater">Wath Later
-          <BookmarkSimple size={22} weight="bold" className="bookmark"/>
+          <span className="watchLater">
+            Wath Later
+            <BookmarkSimple size={22} weight="bold" className="bookmark" />
           </span>
         </AvaliacaoContainer>
 
-        <iframe className="trailer" src="https://www.youtube.com/embed/F3OxA9Cz17A?si=7xC9b4qoGtYOADMs" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe
+          className="trailer"
+          src="https://www.youtube.com/embed/F3OxA9Cz17A?si=7xC9b4qoGtYOADMs"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
       </MidiaFilmeContainer>
-
     </>
   );
 }
