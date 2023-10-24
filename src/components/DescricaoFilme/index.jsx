@@ -86,7 +86,7 @@ export function DescricaoFilmeSct() {
               ))}
             </p>
 
-            <p>Contagem de votos: {movie.vote_count}</p>
+            <p>Contagem de votos: <span>{movie.vote_count}</span></p>
 
             <p>
               Linguagens disponíveis:
