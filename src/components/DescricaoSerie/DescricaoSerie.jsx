@@ -148,7 +148,7 @@ export function DescricaoSerie() {
       ) : (
         <MidiaFilmeContainerNoTrailer>
           <div className="noText">
-            <h1> O filme não possui trailer disponível </h1>
+            <h1> A série não possui trailer disponível </h1>
           </div>
         </MidiaFilmeContainerNoTrailer>
       )}
