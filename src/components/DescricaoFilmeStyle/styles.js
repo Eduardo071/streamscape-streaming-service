@@ -136,8 +136,8 @@ export const MidiaFilmeContainer = styled.section`
   .trailer {
     border-radius: 16px;
     margin-top: 8rem;
-    width: 110rem;
-    height: 70rem;
+    width: 90rem;
+    height: 50rem;
   }
 `;
 

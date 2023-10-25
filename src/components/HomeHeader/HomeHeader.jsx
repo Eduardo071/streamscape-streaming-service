@@ -13,9 +13,6 @@ export function HomeHeader() {
         <NavLink to="/movies/discover">
           <span>Filmes</span>
         </NavLink>
-        <NavLink to="/animations/discover">
-          <span>Animações</span>
-        </NavLink>
         <NavLink to="/series/discover">
           <span>Séries</span>
         </NavLink>

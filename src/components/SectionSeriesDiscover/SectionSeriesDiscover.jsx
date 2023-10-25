@@ -52,7 +52,7 @@ export function SectionSeriesDiscover() {
     <Container>
       <ContainerOfStreams>
         {series.map((serie, index) => (
-          <NavLink key={index} to={`/movie/${serie.id}`}>
+          <NavLink key={index} to={`/serie/${serie.id}`}>
           <S.Card>
             <S.ImagePost src={`${post_path}${serie.poster_path}`} alt="" />
             <S.StreamTitle>{serie.name}</S.StreamTitle>

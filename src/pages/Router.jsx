@@ -5,6 +5,7 @@ import { Profile } from "./Profile";
 import { Planos } from "./Planos";
 import { Filmes } from "./Filmes";
 import { Series } from "./Series";
+import Serie from "./Serie";
 
 //  Função de Rotas
 export default function AppRoutes() {
@@ -14,6 +15,7 @@ export default function AppRoutes() {
         <Route path="/" element={<Navigate to="/home" />} />
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/movie/:idMovie" element={<Filme />} />
+        <Route exact path="/serie/:idSerie" element={<Serie />} />
         <Route exact path="/movies/discover" element={<Filmes />} />
         <Route exact path="/series/discover" element={<Series />} />
         <Route exact path="/profile" element={<Profile />} />

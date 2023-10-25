@@ -145,7 +145,7 @@ export function SectionSliders() {
             }}
           >
             {lancamentoSerie.map((serie, index) => (
-              <Link key={index} to={`serie/${serie.id}`}>
+              <Link key={index} to={`/serie/${serie.id}`}>
                 <S.CardMovie>
                   <img
                     src={`${post_path}${serie.poster_path}`}
