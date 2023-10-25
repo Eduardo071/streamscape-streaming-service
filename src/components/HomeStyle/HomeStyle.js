@@ -30,7 +30,7 @@ export const Logo = styled.img`
 
 export const NavBar = styled.nav`
   display: flex;
-  gap: 1rem;
+  gap: 4rem;
 
   span {
     color: #fff;
