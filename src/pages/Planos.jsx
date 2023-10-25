@@ -4,15 +4,12 @@ import { HeroPlanos } from "../components/HeroPlanos";
 
 import { HomeHeader } from "../components/HomeHeader/HomeHeader";
 
-
-export function Planos (){
+export function Planos() {
   return (
     <Background>
-      <HomeHeader/>
-
-    <HeroPlanos/>
-
-      <Footer/>
+      <HomeHeader />
+      <HeroPlanos />
+      <Footer />
     </Background>
-  )
+  );
 }

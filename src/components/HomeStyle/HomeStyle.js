@@ -263,6 +263,7 @@ export const OfferSection = styled.section`
 
 export const ContainerOfferText = styled.div`
   width: 44rem;
+  min-height: 30rem;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -283,13 +284,15 @@ export const ContainerOfferText = styled.div`
   }
 
   button {
-    padding: 1rem;
+    width: 30rem;
+    height: 6rem;
+    padding: 2rem;
     font-size: 2rem;
     font-weight: 700;
     color: #fff;
     border: none;
-    transition: 0.6s;
-    background: rgb(102, 51, 102);
+    transition: 0.3s;
+    border-radius: 0.9rem;
     background: linear-gradient(
       rgba(102, 51, 102, 1) 0%,
       rgba(153, 0, 0, 1) 100%

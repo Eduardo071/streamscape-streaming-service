@@ -3,11 +3,12 @@ import styled from "styled-components";
 export const Container = styled.div`
   min-height: 62vh;
 
-  margin-top: 10vh;
-  padding: 4rem 0 0 5rem;
+  margin-top: 13vh;
+  padding: 0 4rem;
 
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
 
   h3 {
@@ -17,8 +18,8 @@ export const Container = styled.div`
 
   ul {
     display: flex;
-    width: 80vw;
-    height: 85vh;
+    width: 100vw;
+    height: 82vh;
     align-items: center;
     justify-content: space-between;
     gap: 10rem;
@@ -27,7 +28,7 @@ export const Container = styled.div`
     li {
       border: 2px solid #fff;
       border-radius: 12px;
-      width: 38vw;
+      width: 42vw;
       height: 60vh;
       display: flex;
       align-items: center;
@@ -36,7 +37,7 @@ export const Container = styled.div`
       padding: 2rem;
       transition: 0.3s;
 
-      &:hover{
+      &:hover {
         cursor: pointer;
         scale: 1.1;
       }
@@ -46,7 +47,7 @@ export const Container = styled.div`
 
         p,
         span {
-          font-size: 1.6rem;
+          font-size: 2rem;
         }
 
         width: 100%;
@@ -61,7 +62,7 @@ export const Container = styled.div`
   p,
   h3,
   span {
-    font-size: 1.6rem;
+    font-size: 4rem;
     text-align: justify;
     color: #fff;
   }
@@ -69,21 +70,21 @@ export const Container = styled.div`
   .plus {
     border: 2px solid #fff;
     border-radius: 12px;
-    width: 45vw;
+    width: 55vw;
     height: 70vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 2rem;
     flex-direction: column;
     padding: 2rem;
-
 
     header {
       margin-bottom: 3rem;
 
       p,
       span {
-        font-size: 1.6rem;
+        font-size: 3rem;
       }
 
       width: 100%;
@@ -102,4 +103,25 @@ export const Container = styled.div`
       color: #fff;
     }
   }
+  .containerTopics{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1.5rem;
+
+    p{
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      
+      span{
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+    }
+  }
 `;
+
