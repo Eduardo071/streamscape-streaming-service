@@ -16,7 +16,7 @@ export const ContainerOfStreams = styled.section`
   align-items: center;
   padding: 0 4rem;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 5rem;
 `;
 
 export const Paginator = styled.footer`
@@ -37,7 +37,7 @@ export const PreviousPage = styled.button`
   border: none;
   transition: 0.3s;
 
-  &:hover{
+  &:hover {
     cursor: pointer;
     scale: 1.05;
   }
@@ -53,20 +53,20 @@ export const NextPage = styled.button`
   border: none;
   transition: 0.3s;
 
-  &:hover{
+  &:hover {
     cursor: pointer;
     scale: 1.05;
   }
 `;
 
 export const ActualPage = styled.span`
-font-size: 1.8rem;
-color: #fff;
-font-weight: bold;
-display: flex;
-gap: 1rem;
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  gap: 1rem;
 
-span {
+  span {
     display: flex;
     width: 2.5rem;
     justify-content: center;
@@ -75,9 +75,37 @@ span {
     border: solid;
     border-radius: 0.2rem;
     font-weight: bold;
-}
+  }
 
-span:last-child{
+  span:last-child {
     width: 6rem;
-}
+  }
+`;
+
+export const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+
+  &:hover{
+    cursor: pointer;
+    scale: 1.02;
+  }
+`;
+
+export const ImagePost = styled.img`
+  width: 22rem;
+  border-radius: 0.5rem;
+`;
+
+export const StreamTitle = styled.h1`
+  font-size: 1.6rem;
+  color: #fff;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 20ch;
+  white-space: nowrap;
 `;

@@ -67,7 +67,7 @@ export const MenuOptions = styled.ul`
 export const Hero = styled.main`
   margin-top: 10vh;
   width: 100vw;
-  height: 90vh;
+  height: 81vh;
   background: linear-gradient(to right, black, transparent);
   background-size: cover;
   background-position: center center;
