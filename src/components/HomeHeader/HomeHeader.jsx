@@ -3,7 +3,6 @@ import { User, MagnifyingGlass } from "phosphor-react";
 import logo from "../../images/streamscape_logo.png";
 import { NavLink } from "react-router-dom";
 
-// link logo => home
 export function HomeHeader() {
   return (
     <S.Header>
@@ -11,10 +10,18 @@ export function HomeHeader() {
         <S.Logo src={logo} alt="logo streamscape" />
       </NavLink>
       <S.NavBar>
-        <a href="">Filmes</a>
-        <a href="">Animações</a>
-        <a href="">Séries</a>
-        <a href="">Coleções</a>
+        <NavLink to="/movies/discover">
+          <span>Filmes</span>
+        </NavLink>
+        <NavLink to="/animations/discover">
+          <span>Animações</span>
+        </NavLink>
+        <NavLink to="/series/discover">
+          <span>Séries</span>
+        </NavLink>
+        <NavLink to="/colections/discover">
+          <span>Coleções</span>
+        </NavLink>
       </S.NavBar>
       <S.MenuOptions>
         <li>

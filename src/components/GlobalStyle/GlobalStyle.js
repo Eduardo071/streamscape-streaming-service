@@ -17,4 +17,9 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
   }
 
+  html, body {
+    width: 100vw;
+    height: 100vh;
+  }
+
 `;

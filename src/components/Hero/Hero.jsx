@@ -16,7 +16,6 @@ export function Hero() {
     const post_data = async () => {
       const arrayData = await data();
       setMovies(arrayData);
-
       const movieIds = arrayData.map((movie) => movie.id);
       setMovieId(movieIds);
     };
@@ -74,7 +73,7 @@ export function Hero() {
           </S.DescFilme>
           <S.NavBarFilme>
             <button>
-              <NavLink to="/titulo-do-filme">
+              <NavLink to={`/movie/${movie.id}`} >
                 <Play size={32} color="#fcfcfc" />
               </NavLink>
             </button>

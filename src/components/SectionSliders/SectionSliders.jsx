@@ -99,7 +99,7 @@ export function SectionSliders() {
             }}
           >
             {lancamentoFilme.map((movie, index) => (
-              <Link key={index} to={`/${movie.id}`}>
+              <Link key={index} to={`/movie/${movie.id}`}>
                 <S.CardMovie>
                   <img
                     src={`${post_path}${movie.poster_path}`}
@@ -145,7 +145,7 @@ export function SectionSliders() {
             }}
           >
             {lancamentoSerie.map((serie, index) => (
-              <Link key={index} to={`/${serie.id}`}>
+              <Link key={index} to={`serie/${serie.id}`}>
                 <S.CardMovie>
                   <img
                     src={`${post_path}${serie.poster_path}`}
@@ -191,7 +191,7 @@ export function SectionSliders() {
             }}
           >
             {melhoresFilmes.map((movie, index) => (
-              <Link to={`/${movie.id}`} key={index}>
+              <Link to={`/movie/${movie.id}`} key={index}>
               <S.CardMovie>
                 <img
                   src={`${post_path}${movie.poster_path}`}
@@ -237,7 +237,7 @@ export function SectionSliders() {
             }}
           >
             {popularFilme.map((movie, index) => (
-              <Link key={index} to={`/${movie.id}`}>
+              <Link key={index} to={`/movie/${movie.id}`}>
               <S.CardMovie>
                 <img
                   src={`${post_path}${movie.poster_path}`}
@@ -283,7 +283,7 @@ export function SectionSliders() {
             }}
           >
             {filmesCinema.map((movie, index) => (
-              <Link key={index} to={`/${movie.id}`}>
+              <Link key={index} to={`/movie/${movie.id}`}>
               <S.CardMovie>
                 <img
                   src={`${post_path}${movie.poster_path}`}

@@ -32,7 +32,7 @@ export const NavBar = styled.nav`
   display: flex;
   gap: 1rem;
 
-  a {
+  span {
     color: #fff;
     font-weight: 500;
     transition: 0.3s;

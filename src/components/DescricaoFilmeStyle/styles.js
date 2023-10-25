@@ -9,61 +9,61 @@ export const InfoFilmeContainer = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
 
-  section:first-child{
+  section:first-child {
     color: red;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    
 
-    img{
+    img {
       width: 80rem;
     }
 
-    h2{
+    h2 {
       color: white;
       font-size: 3.5rem;
     }
   }
 
-  section:last-child{
+  section:last-child {
     display: flex;
     flex-direction: column;
-    align-items:flex-start;
-    gap: 3.0rem;
-    width: 60.0rem;
+    gap: 3rem;
+    width: 60rem;
     margin-left: 2rem;
-    margin-top: 6.8rem;
+    margin-top: 3.2rem;
     font-size: 2.2rem;
 
-    div,p, span{
+    div,
+    p,
+    span {
       font-size: 1.5rem;
     }
 
-    .info-filme{
+    .info-filme {
       display: flex;
       flex-direction: column;
       gap: 1.4rem;
-      color: #B9B9B9;
+      color: #b9b9b9;
 
-      p:last-child{
+      p:last-child {
         display: flex;
         align-items: center;
 
-        .imdb{
-          span:first-child{
-          font-weight: 700;
-          font-size: 1.2rem;
-          padding: 2px;
-          border-radius: 2px;
-          margin-left: 12px;
-          border: 1px solid #fff;
-          color: #fff;
+        .imdb {
+          span:first-child {
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 2px;
+            border-radius: 2px;
+            margin-left: 12px;
+            border: 1px solid #fff;
+            color: #fff;
           }
 
-          span{
+          span {
             display: inline-block;
             border: none;
             margin-left: 8px;
@@ -73,27 +73,26 @@ export const InfoFilmeContainer = styled.section`
       }
     }
 
-    .info-producao{
-      margin-top: 2rem;
+    .info-producao {
       display: flex;
       flex-direction: column;
       gap: 4rem;
 
-      p{
+      p {
         font-weight: 600;
         text-transform: uppercase;
         font-size: 1.4rem;
 
-        span{
+        span {
           font-size: 1.4rem;
           margin-left: 12px;
           text-transform: none;
-          color: #B9B9B9;
+          color: #b9b9b9;
         }
       }
     }
   }
-`
+`;
 
 export const MidiaFilmeContainer = styled.section`
   padding: 0 4rem;
@@ -103,18 +102,20 @@ export const MidiaFilmeContainer = styled.section`
   align-items: center;
   background-color: #191919;
   color: #fff;
-  button, div, span{
+  button,
+  div,
+  span {
     font-size: 1.6rem;
   }
 
-  .filmes-fotos-videos{
+  .filmes-fotos-videos {
     margin: 9rem auto;
-    
-    header{
+
+    header {
       display: flex;
       gap: 1.6rem;
 
-      button{
+      button {
         background: transparent;
         color: white;
         border: none;
@@ -125,64 +126,37 @@ export const MidiaFilmeContainer = styled.section`
         font-size: 1.78rem;
         cursor: pointer;
 
-        &:hover{
-          border-bottom-color: #B9B9B9 ;
+        &:hover {
+          border-bottom-color: #b9b9b9;
         }
       }
     }
   }
 
-  .trailer{
+  .trailer {
     border-radius: 16px;
     margin-top: 8rem;
     width: 110rem;
     height: 70rem;
   }
-`
+`;
 
-export const AvaliacaoContainer = styled.section`
-  padding-bottom: 3rem;
-  align-self: flex-start;
+export const MidiaFilmeContainerNoTrailer = styled.section`
   display: flex;
-  justify-content: space-between;
+  width: 100vw;
+  justify-content: center;
+  align-self: center;
 
-  div:first-child{
+  .noText {
+    width: 100%;
+    height: 15rem;
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 10px;
+    align-items: end;
+    color: #fff;
 
-    span{
-      font-size: 1.6rem;
-      opacity: 0.9;
-    }
-    
-    .star{
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .star:hover{
-     transform: scale(1.1);
-      color: #a79520;
+    h1 {
+      font-size: 3rem;
     }
   }
-
-  .watchLater{
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    svg{
-      cursor: pointer;
-      transition: all 0.1s;
-    }
-
-    svg:hover{
-      transform: scale(1.1);
-      font-weight: 900;
-      color: #a79520;
-    }
-  }
-`
-
+`;

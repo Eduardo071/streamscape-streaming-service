@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
 import {
-  AvaliacaoContainer,
   InfoFilmeContainer,
   MidiaFilmeContainer,
+  MidiaFilmeContainerNoTrailer,
 } from "../DescricaoFilmeStyle/styles";
-import { FilmeMidia } from "../FilmeMidia";
-import { BookmarkSimple, Star } from "phosphor-react";
 import { useParams } from "react-router-dom";
 import {
   paramsBase,
   post_path,
   urlMovieSearchById,
 } from "../../variables/variables";
+import { api_key } from "../../api/API_KEY";
 
 export function DescricaoFilmeSct() {
   const [movie, setMovie] = useState([]);
   const [movieGenres, setMovieGenres] = useState([]);
   const [movieCreators, setMovieCreators] = useState([]);
   const [dublagemDisponiveis, setDublagemDisponiveis] = useState([]);
+  const [movieIdTrailer, setMovieIdTrailer] = useState();
   const { idMovie } = useParams();
   useEffect(() => {
     const requestApiMovieId = async () => {
@@ -32,9 +32,20 @@ export function DescricaoFilmeSct() {
     };
     requestApiMovieId();
   }, [movie, idMovie]);
-  
-  const [valorClicadoMidia, setValorClicadoMidia] = useState("videos");
 
+  useEffect(() => {
+    const requestIdTrailerMovie = async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${idMovie}/videos?api_key=${api_key}&language=pt-BR`,
+      );
+      const data = await response.json();
+        setMovieIdTrailer(data.results[0].key);
+    };
+    if (dublagemDisponiveis !== null) requestIdTrailerMovie();
+  }, [movie, idMovie, dublagemDisponiveis]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <InfoFilmeContainer>
@@ -86,7 +97,9 @@ export function DescricaoFilmeSct() {
               ))}
             </p>
 
-            <p>Contagem de votos: <span>{movie.vote_count}</span></p>
+            <p>
+              Contagem de votos: <span>{movie.vote_count}</span>
+            </p>
 
             <p>
               Linguagens disponíveis:
@@ -106,45 +119,24 @@ export function DescricaoFilmeSct() {
           </div>
         </section>
       </InfoFilmeContainer>
-
-      <MidiaFilmeContainer>
-        <section className="filmes-fotos-videos">
-          <header>
-            <button onClick={() => setValorClicadoMidia("videos")} name="video">
-              Videos
-            </button>
-            <button onClick={() => setValorClicadoMidia("fotos")} name="fotos">
-              Photos
-            </button>
-          </header>
-
-          <FilmeMidia click={valorClicadoMidia} />
-        </section>
-
-        <AvaliacaoContainer>
-          <div>
-            <Star size={18} color="#a79520" weight="fill" />
-            <span>7,0</span>
-            |
-            <Star size={18} className="star" />
-            <span> rate this</span>
+      {movieIdTrailer !== undefined ? (
+        <MidiaFilmeContainer>
+          <iframe
+            className="trailer"
+            src={`https://www.youtube.com/embed/${movieIdTrailer}?si=JyBwrEzapF-ldlbW`}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </MidiaFilmeContainer>
+      ) : (
+        <MidiaFilmeContainerNoTrailer>
+          <div className="noText">
+            <h1> O filme não possui trailer disponível </h1>
           </div>
-
-          <span className="watchLater">
-            Wath Later
-            <BookmarkSimple size={22} weight="bold" className="bookmark" />
-          </span>
-        </AvaliacaoContainer>
-
-        <iframe
-          className="trailer"
-          src="https://www.youtube.com/embed/F3OxA9Cz17A?si=7xC9b4qoGtYOADMs"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
-      </MidiaFilmeContainer>
+        </MidiaFilmeContainerNoTrailer>
+      )}
     </>
   );
 }
