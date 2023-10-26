@@ -8,35 +8,35 @@ import { useParams } from "react-router-dom";
 import {
   paramsBase,
   post_path,
-  urlMovieSearchById,
+  urlCollectionSearchById,
 } from "../../variables/variables";
 import { api_key } from "../../api/API_KEY";
 
-export function DescricaoFilmeSct() {
-  const [movie, setMovie] = useState([]);
-  const [movieGenres, setMovieGenres] = useState([]);
-  const [movieCreators, setMovieCreators] = useState([]);
+export function DescricaoCollection() {
+  const [collection, setCollection] = useState([]);
+  const [collectionGenres, setCollectionGenres] = useState([]);
+  const [collectionCreators, setCollectionCreators] = useState([]);
   const [dublagemDisponiveis, setDublagemDisponiveis] = useState([]);
-  const [movieIdTrailer, setMovieIdTrailer] = useState();
-  const { idMovie } = useParams();
+  const [collectionIdTrailer, setCollectionIdTrailer] = useState();
+  const { idCollection } = useParams();
   useEffect(() => {
-    const requestApiMovieId = async () => {
+    const requestApiCollectionId = async () => {
       const response = await fetch(
-        `${urlMovieSearchById}/${idMovie}${paramsBase}`,
+        `${urlCollectionSearchById}/${idCollection}${paramsBase}`,
       );
       const data = await response.json();
-      setMovie(data);
-      setMovieGenres(data.genres);
-      setMovieCreators(data.production_companies);
+      setCollection(data);
+      setCollectionGenres(data.genres);
+      setCollectionCreators(data.production_companies);
       setDublagemDisponiveis(data.spoken_languages);
     };
-    requestApiMovieId();
-  }, [movie, idMovie]);
+    requestApiCollectionId();
+  }, [collection, idCollection]);
 
   useEffect(() => {
-    const requestIdTrailerMovie = async () => {
+    const requestIdTrailerCollection = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${idMovie}/videos?api_key=${api_key}&language=pt-BR`,
+        `https://api.themoviedb.org/3/collection/${idCollection}/videos?api_key=${api_key}&language=pt-BR`,
       );
       const dataPtBR = await response.json();
       if (
@@ -45,15 +45,15 @@ export function DescricaoFilmeSct() {
         dataPtBR.results[0] === ""
       ) {
         const responseEN = await fetch(
-          `https://api.themoviedb.org/3/movie/${idMovie}/videos?api_key=${api_key}`,
+          `https://api.themoviedb.org/3/collection/${idCollection}/videos?api_key=${api_key}`,
         );
         const dataEN = await responseEN.json();
-        setMovieIdTrailer(dataEN.results[0].key);
+        setCollectionIdTrailer(dataEN.results[0].key);
       }
-        setMovieIdTrailer(dataPtBR.results[0].key);
+        setCollectionIdTrailer(dataPtBR.results[0].key);
     };
-    if (dublagemDisponiveis !== null) requestIdTrailerMovie();
-  }, [movie, idMovie, dublagemDisponiveis]);
+    if (dublagemDisponiveis !== null) requestIdTrailerCollection();
+  }, [collection, idCollection, dublagemDisponiveis]);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -62,28 +62,28 @@ export function DescricaoFilmeSct() {
       <InfoFilmeContainer>
         <section>
           <img
-            src={`${post_path}${movie.backdrop_path}`}
+            src={`${post_path}${collection.backdrop_path}`}
             alt="poster oficial do filme"
           />
 
-          <h2>{movie.title}</h2>
+          <h2>{collection.title}</h2>
         </section>
 
         <section>
-          <p>{movie.overview}</p>
+          <p>{collection.overview}</p>
 
           <div className="info-filme">
             <p>
-              {movie.adult
+              {collection.adult
                 ? "Classificação adulta"
                 : "Classificação não adulta"}{" "}
-              | {movie.release_date}
+              | {collection.release_date}
             </p>
 
             <p className="generos-filme">
-              {movieGenres.map((genre, index) => (
+              {collectionGenres.map((genre, index) => (
                 <span key={index}>
-                  {index !== movieGenres.length - 1
+                  {index !== collectionGenres.length - 1
                     ? `${genre.name}|`
                     : `${genre.name}`}
                 </span>
@@ -91,7 +91,7 @@ export function DescricaoFilmeSct() {
 
               <p className="imdb">
                 <span>IMBD </span>
-                <span>{movie.vote_average}</span>
+                <span>{collection.vote_average}</span>
               </p>
             </p>
           </div>
@@ -99,9 +99,9 @@ export function DescricaoFilmeSct() {
           <div className="info-producao">
             <p>
               Companias de produção:
-              {movieCreators.map((creator, index) => (
+              {collectionCreators.map((creator, index) => (
                 <span key={index}>
-                  {index !== movieCreators.length - 1
+                  {index !== collectionCreators.length - 1
                     ? `${creator.name},`
                     : `${creator.name}`}
                 </span>
@@ -109,7 +109,7 @@ export function DescricaoFilmeSct() {
             </p>
 
             <p>
-              Contagem de votos: <span>{movie.vote_count}</span>
+              Contagem de votos: <span>{collection.vote_count}</span>
             </p>
 
             <p>
@@ -125,16 +125,16 @@ export function DescricaoFilmeSct() {
 
             <p>
               Tempo de duração:
-              <span>{movie.runtime} minutos</span>
+              <span>{collection.runtime} minutos</span>
             </p>
           </div>
         </section>
       </InfoFilmeContainer>
-      {movieIdTrailer !== undefined ? (
+      {collectionIdTrailer !== undefined ? (
         <MidiaFilmeContainer>
           <iframe
             className="trailer"
-            src={`https://www.youtube.com/embed/${movieIdTrailer}?si=JyBwrEzapF-ldlbW`}
+            src={`https://www.youtube.com/embed/${collectionIdTrailer}?si=JyBwrEzapF-ldlbW`}
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
