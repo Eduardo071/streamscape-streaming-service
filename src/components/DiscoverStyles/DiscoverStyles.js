@@ -14,7 +14,7 @@ export const ContainerOfStreams = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 4rem;
+  padding: 4rem;
   flex-wrap: wrap;
   gap: 5rem;
 `;
@@ -89,7 +89,7 @@ export const Card = styled.div`
   align-items: center;
   transition: 0.3s;
 
-  &:hover{
+  &:hover {
     cursor: pointer;
     scale: 1.02;
   }
@@ -108,4 +108,48 @@ export const StreamTitle = styled.h1`
   overflow: hidden;
   max-width: 20ch;
   white-space: nowrap;
+`;
+
+export const ContainerNoStreams = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  margin-top: 12vh;
+  margin-bottom: 40vh;
+
+  h1 {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #fff;
+  }
+`;
+
+export const SearchBox = styled.section`
+  width: 100vw;
+  min-height: 10vh;
+  display: flex;
+  justify-content: center;
+
+  form {
+    display: flex;
+    width: 100vw;
+    height: 10vh;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.8rem;
+
+    input{
+      width: 70vw;
+      height: 10vh;
+      font-size: 2.5rem;
+      outline-style: none;
+      padding-left: 2rem;
+      border-radius: 2rem;
+      border: none;
+      color: #0A0A0A;
+      font-weight: bold;
+      font-style: italic;
+    }
+  }
 `;

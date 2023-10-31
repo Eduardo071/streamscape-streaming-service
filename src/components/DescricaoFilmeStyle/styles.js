@@ -30,6 +30,8 @@ export const InfoFilmeContainer = styled.section`
   section:last-child {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    text-align: justify;
     gap: 3rem;
     width: 60rem;
     margin-left: 2rem;
@@ -157,6 +159,65 @@ export const MidiaFilmeContainerNoTrailer = styled.section`
 
     h1 {
       font-size: 3rem;
+    }
+  }
+`;
+
+export const CollectionStreamsContainer = styled.section`
+  display: flex;
+  align-self: center;
+  width: 100vw;
+  height: 60rem;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 2rem;
+  min-height: 50rem;
+  flex-wrap: wrap;
+  background-color: #191919;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 2rem;
+    transition: 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      scale: 1.02;
+    }
+
+    img {
+      width: 20rem;
+      height: 30rem;
+      border-radius: 1rem;
+    }
+
+    .noImage {
+      width: 20rem;
+      height: 30rem;
+      border-radius: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border: solid;
+
+      h1 {
+        font-size: 1.8rem;
+        flex-wrap: wrap;
+        color: #fff;
+        font-weight: bold;
+      }
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      flex-wrap: wrap;
+      color: #fff;
+      font-weight: bold;
     }
   }
 `;

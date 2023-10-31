@@ -16,7 +16,7 @@ export function HomeHeader() {
         <NavLink to="/series/discover">
           <span>Séries</span>
         </NavLink>
-        <NavLink to="/colections/discover">
+        <NavLink to="/collections/discover">
           <span>Coleções</span>
         </NavLink>
       </S.NavBar>
