@@ -88,6 +88,7 @@ export const Card = styled.div`
   justify-content: center;
   align-items: center;
   transition: 0.3s;
+  padding: 1rem;
 
   &:hover {
     cursor: pointer;

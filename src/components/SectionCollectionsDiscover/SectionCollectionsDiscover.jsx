@@ -11,6 +11,7 @@ import { api_key } from "../../api/API_KEY";
 import { post_path } from "../../variables/variables";
 import * as S from "../DiscoverStyles/DiscoverStyles";
 import { NavLink } from "react-router-dom";
+import { SearchBox } from "../SearchBox/SearchBox";
 
 export function SectionCollectionsDiscover() {
   const [page, setPage] = useState(1);
@@ -49,20 +50,12 @@ export function SectionCollectionsDiscover() {
   const toPreviousPage = () => {
     setPage(page - 1);
   };
+
+  const setTermToSearch = (e) => setQuery(e.target.value);
   return (
     <Container>
-      <S.SearchBox>
-        <form>
-          <input
-            onChange={(e) => setQuery(e.target.value)}
-            type="text"
-            name="streamSearch"
-            id="streamSearch"
-            placeholder="Pesquise aqui"
-          />
-        </form>
-      </S.SearchBox>
-      {query !== "" ? (
+      <SearchBox funtionSetSearch={setTermToSearch} />
+      {query !== "" && collections.length !== 0 ? (
         <ContainerOfStreams>
           {collections.map((collection, index) => (
             <NavLink key={index} to={`/collection/${collection.id}`}>
@@ -76,11 +69,15 @@ export function SectionCollectionsDiscover() {
             </NavLink>
           ))}
         </ContainerOfStreams>
-      ) : (
+      ) : query === "" ? (
         <S.ContainerNoStreams>
           <h1> Busque por alguma coleção </h1>
         </S.ContainerNoStreams>
-      )}
+      ) : collections.length === 0 && query !== "" ? (
+        <S.ContainerNoStreams>
+          <h1> Coleção não encontrada </h1>
+        </S.ContainerNoStreams>
+      ) : null}
       <Paginator>
         <PreviousPage
           onClick={() => {

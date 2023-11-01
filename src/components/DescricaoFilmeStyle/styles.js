@@ -30,12 +30,11 @@ export const InfoFilmeContainer = styled.section`
   section:last-child {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     text-align: justify;
     gap: 3rem;
     width: 60rem;
     margin-left: 2rem;
-    margin-top: 3.2rem;
+    margin-top: 1rem;
     font-size: 2.2rem;
 
     div,
@@ -110,31 +109,6 @@ export const MidiaFilmeContainer = styled.section`
     font-size: 1.6rem;
   }
 
-  .filmes-fotos-videos {
-    margin: 9rem auto;
-
-    header {
-      display: flex;
-      gap: 1.6rem;
-
-      button {
-        background: transparent;
-        color: white;
-        border: none;
-        border-top: 2px solid transparent;
-        border-bottom: 2px solid transparent;
-        display: flex;
-        align-items: center;
-        font-size: 1.78rem;
-        cursor: pointer;
-
-        &:hover {
-          border-bottom-color: #b9b9b9;
-        }
-      }
-    }
-  }
-
   .trailer {
     border-radius: 16px;
     margin-top: 8rem;
@@ -167,7 +141,7 @@ export const CollectionStreamsContainer = styled.section`
   display: flex;
   align-self: center;
   width: 100vw;
-  height: 60rem;
+  min-height: 60rem;
   justify-content: center;
   align-items: center;
   gap: 2rem;
@@ -183,6 +157,9 @@ export const CollectionStreamsContainer = styled.section`
     align-items: center;
     padding: 2rem;
     transition: 0.3s;
+    overflow: hidden;
+    width: 25rem;
+    text-align: center;
 
     &:hover {
       cursor: pointer;

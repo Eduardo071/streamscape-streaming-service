@@ -64,6 +64,13 @@ export const MenuOptions = styled.ul`
   }
 `;
 
+export const ContainerHero = styled.div`
+  .HeroMainSkeleton {
+ width: 100vw;
+ height: 91.5vh;
+ }
+`;
+
 export const Hero = styled.main`
   margin-top: 10vh;
   width: 100vw;
@@ -233,7 +240,7 @@ export const CardMovie = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding-right: 2rem;
+  padding: 2rem;
   align-self: baseline;
   transition: 0.3s;
 
