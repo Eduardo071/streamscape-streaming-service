@@ -6,6 +6,7 @@ import { Play } from "phosphor-react";
 import { movie_data } from "../../api/movie_details";
 import { NavLink } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 export function Hero() {
   const [movies, setMovies] = useState([]);
@@ -63,7 +64,7 @@ export function Hero() {
   });
 
   return (
-    <SkeletonTheme baseColor="#202020" highlightColor="#444">
+    <SkeletonTheme baseColor="#202020" highlightColor="#2b2a2a">
       <S.ContainerHero
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
@@ -82,8 +83,8 @@ export function Hero() {
             >
               <S.HeroGradientOverlay />
               <S.DescFilme>
-                <h1>{movie.title || <Skeleton />}</h1>
-                <p>{movie.overview || <Skeleton count={4} />}</p>
+                <h1>{movie.title}</h1>
+                <p>{movie.overview}</p>
                 <h3>
                   <S.ImdbLogo>IMBD </S.ImdbLogo>
                   {movie.vote_average.toFixed(1)} | {movie.release_date} |{" "}

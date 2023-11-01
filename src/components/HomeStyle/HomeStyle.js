@@ -66,9 +66,9 @@ export const MenuOptions = styled.ul`
 
 export const ContainerHero = styled.div`
   .HeroMainSkeleton {
- width: 100vw;
- height: 91.5vh;
- }
+    width: 100vw;
+    height: 91.5vh;
+  }
 `;
 
 export const Hero = styled.main`
@@ -212,8 +212,12 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-self: center;
-  width: 87vw;
-  margin-right: 1.5vw;
+  width: 85vw;
+  margin-right: 0.5vw;
+  .textLabelSkeleton {
+    width: 15vw;
+    height: 2rem;
+  }
   h2 {
     color: #fff;
     font-size: 1.8rem;
@@ -244,6 +248,20 @@ export const CardMovie = styled.div`
   align-self: baseline;
   transition: 0.3s;
 
+  .imageCardSkeleton {
+    border-radius: 0.3rem;
+    width: 18.5rem;
+    height: 27rem;
+  }
+  .titleCardSkeleton {
+    height: 1.5rem;
+    padding-bottom: 0.6rem;
+  }
+
+  img {
+    border-radius: 0.6rem;
+  }
+
   h1 {
     font-size: 1.75rem;
     font-weight: 700;
@@ -266,6 +284,11 @@ export const OfferSection = styled.section`
   img {
     width: 35rem;
   }
+
+  .imageOfferSkeleton {
+    width: 35rem;
+    height: 20rem;
+  }
 `;
 
 export const ContainerOfferText = styled.div`
@@ -278,6 +301,20 @@ export const ContainerOfferText = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: 3rem;
+  .titleOfferSkeleton {
+    width: 18vw;
+    height: 4rem;
+  }
+  .descriptionOfferSkeleton {
+    width: 25vw;
+    height: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  .buttonOfferSkeleton {
+    width: 19vw;
+    height: 5rem;
+  }
+
   h2 {
     font-size: 3rem;
     font-weight: 700;
