@@ -12,6 +12,7 @@ import { post_path } from "../../variables/variables";
 import * as S from "../DiscoverStyles/DiscoverStyles";
 import { NavLink } from "react-router-dom";
 import { SearchBox } from "../SearchBox/SearchBox";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 export function SectionCollectionsDiscover() {
   const [page, setPage] = useState(1);
@@ -20,6 +21,8 @@ export function SectionCollectionsDiscover() {
   const [notPreviously, setNotPreviously] = useState(false);
   const [notNext, setNotNext] = useState(false);
   const [query, setQuery] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingOneTime, setIsLoadingOneTime] = useState(true);
   useEffect(() => {
     const requestCollectionsDiscover = async () => {
       const response = await fetch(
@@ -43,6 +46,18 @@ export function SectionCollectionsDiscover() {
     }
   }, [page, totalPages, query]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  });
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoadingOneTime(false);
+    }, 2000);
+  });
+
   const toNextPage = () => {
     setPage(page + 1);
   };
@@ -51,54 +66,94 @@ export function SectionCollectionsDiscover() {
     setPage(page - 1);
   };
 
-  const setTermToSearch = (e) => setQuery(e.target.value);
+  const setTermToSearch = (e) => {
+    setQuery(e.target.value);
+    setIsLoading(true);
+  };
   return (
     <Container>
-      <SearchBox funtionSetSearch={setTermToSearch} />
-      {query !== "" && collections.length !== 0 ? (
-        <ContainerOfStreams>
-          {collections.map((collection, index) => (
-            <NavLink key={index} to={`/collection/${collection.id}`}>
-              <S.Card>
-                <S.ImagePost
-                  src={`${post_path}${collection.poster_path}`}
-                  alt=""
-                />
-                <S.StreamTitle>{collection.name}</S.StreamTitle>
-              </S.Card>
-            </NavLink>
-          ))}
-        </ContainerOfStreams>
-      ) : query === "" ? (
-        <S.ContainerNoStreams>
-          <h1> Busque por alguma coleção </h1>
-        </S.ContainerNoStreams>
-      ) : collections.length === 0 && query !== "" ? (
-        <S.ContainerNoStreams>
-          <h1> Coleção não encontrada </h1>
-        </S.ContainerNoStreams>
-      ) : null}
-      <Paginator>
-        <PreviousPage
-          onClick={() => {
-            toPreviousPage();
-          }}
-          disabled={notPreviously}
-        >
-          Voltar para página anterior
-        </PreviousPage>
-        <ActualPage>
-          Página <span> {page} </span> de <span> {totalPages} </span>
-        </ActualPage>
-        <NextPage
-          onClick={() => {
-            toNextPage();
-          }}
-          disabled={notNext}
-        >
-          Ir para próxima página
-        </NextPage>
-      </Paginator>
+      <SkeletonTheme baseColor="#202020" highlightColor="#2b2a2a">
+        {isLoadingOneTime ? (
+          <Skeleton className="searchBoxSkeleton" />
+        ) : (
+          <SearchBox funtionSetSearch={setTermToSearch} />
+        )}
+        {query !== "" && collections.length !== 0 ? (
+          <ContainerOfStreams>
+            {collections.map((collection, index) => (
+              <NavLink key={index} to={`/collection/${collection.id}`}>
+                <S.Card>
+                  {isLoading ? (
+                    <>
+                      <Skeleton className="imageCardSkeleton" />
+                      <Skeleton className="titleCardSkeleton" />
+                    </>
+                  ) : (
+                    <>
+                      <S.ImagePost
+                        src={`${post_path}${collection.poster_path}`}
+                        alt=""
+                      />
+                      <S.StreamTitle>{collection.name}</S.StreamTitle>
+                    </>
+                  )}
+                </S.Card>
+              </NavLink>
+            ))}
+          </ContainerOfStreams>
+        ) : query === "" ? (
+          <S.ContainerNoStreams>
+            <h1>
+              {isLoading ? (
+                <Skeleton className="textExceptionSkeleton" />
+              ) : (
+                "Busque por alguma coleção"
+              )}
+            </h1>
+          </S.ContainerNoStreams>
+        ) : collections.length === 0 && query !== "" ? (
+          <S.ContainerNoStreams>
+            <h1>
+              {isLoading ? (
+                <Skeleton className="textExceptionSkeleton" />
+              ) : (
+                "Coleção não encontrada"
+              )}
+            </h1>
+          </S.ContainerNoStreams>
+        ) : null}
+        <Paginator>
+          {isLoading ? (
+            <>
+              <Skeleton className="previousButtonSkeleton" />
+              <Skeleton className="pageInformationSkeleton" />
+              <Skeleton className="nextButtonSkeleton" />
+            </>
+          ) : (
+            <>
+              <PreviousPage
+                onClick={() => {
+                  toPreviousPage();
+                }}
+                disabled={notPreviously}
+              >
+                Voltar para página anterior
+              </PreviousPage>
+              <ActualPage>
+                Página <span> {page} </span> de <span> {totalPages} </span>
+              </ActualPage>
+              <NextPage
+                onClick={() => {
+                  toNextPage();
+                }}
+                disabled={notNext}
+              >
+                Ir para próxima página
+              </NextPage>
+            </>
+          )}
+        </Paginator>
+      </SkeletonTheme>
     </Container>
   );
 }

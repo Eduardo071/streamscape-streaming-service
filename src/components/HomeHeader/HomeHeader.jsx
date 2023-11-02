@@ -1,45 +1,63 @@
 import * as S from "../HomeStyle/HomeStyle";
-import { User, MagnifyingGlass } from "phosphor-react";
+import { MagnifyingGlass } from "phosphor-react";
 import logo from "../../images/streamscape_logo.png";
 import { NavLink } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useEffect, useState } from "react";
 
 export function HomeHeader() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  });
   return (
-    <S.Header >
-      <NavLink to="/" title="Home">
-        {<S.Logo src={logo} alt="logo streamscape" /> || (
-          <Skeleton width={50} />
-        )}
-      </NavLink>
-      <S.NavBar>
-        <NavLink to="/movies/discover">
-          {<span>Filmes</span> || <Skeleton width={60} />}
+    <S.Header>
+      <SkeletonTheme baseColor="#202020" highlightColor="#2b2a2a">
+        <NavLink to="/" title="Home">
+          {isLoading ? (
+            <Skeleton width={190} height={50} />
+          ) : (
+            <S.Logo src={logo} alt="logo streamscape" />
+          )}
         </NavLink>
-        <NavLink to="/series/discover">
-          {<span>Séries</span> || <Skeleton width={60} />}
-        </NavLink>
-        <NavLink to="/collections/discover">
-          {<span>Coleções</span> || <Skeleton width={60} />}
-        </NavLink>
-      </S.NavBar>
-      <S.MenuOptions>
-        <li>
-          <button>
-            {<User size={32} color="#fcfcfc" /> || (
-              <Skeleton circle width={40} />
+        <S.NavBar>
+          <NavLink to="/movies/discover">
+            <span>
+              {isLoading ? <Skeleton width={60} height={20} /> : "Filmes"}
+            </span>
+          </NavLink>
+          <NavLink to="/series/discover">
+            <span>
+              {isLoading ? <Skeleton width={50} height={20} /> : "Séries"}
+            </span>
+          </NavLink>
+          <NavLink to="/collections/discover">
+            <span>
+              {isLoading ? <Skeleton width={70} height={20} /> : "Coleções"}
+            </span>
+          </NavLink>
+        </S.NavBar>
+        <S.MenuOptions>
+          {/* <li>
+            <button>
+              <User size={32} color="#fcfcfc" />
+            </button>
+          </li> */}
+          <li>
+            {isLoading ? (
+              <Skeleton width={40} height={40} circle/>
+            ) : (
+              <button>
+                <MagnifyingGlass size={32} color="#fcfcfc" />
+              </button>
             )}
-          </button>
-        </li>
-        <li>
-          <button>
-            {<MagnifyingGlass size={32} color="#fcfcfc" /> || (
-              <Skeleton circle width={40} />
-            )}
-          </button>
-        </li>
-      </S.MenuOptions>
+          </li>
+        </S.MenuOptions>
+      </SkeletonTheme>
     </S.Header>
   );
 }

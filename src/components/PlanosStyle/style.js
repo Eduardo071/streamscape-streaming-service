@@ -14,6 +14,11 @@ export const Container = styled.div`
   h3 {
     font-size: 1.8rem;
     font-weight: 600;
+
+    .titlePlanSkeleton {
+      width: 38rem;
+      height: 4.2rem;
+    }
   }
 
   ul {
@@ -24,6 +29,16 @@ export const Container = styled.div`
     justify-content: space-between;
     gap: 10rem;
     padding: 0 4rem 0 4rem;
+
+    .sectionPlanSkeleton {
+      width: 42vw;
+      height: 60vh;
+    }
+
+    .specialSectionPlanSkeleton {
+      width: 55vw;
+      height: 70vh;
+    }
 
     li {
       border: 2px solid #fff;
@@ -103,19 +118,19 @@ export const Container = styled.div`
       color: #fff;
     }
   }
-  .containerTopics{
+  .containerTopics {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     padding: 1.5rem;
 
-    p{
+    p {
       display: flex;
       flex-direction: column;
       gap: 0.8rem;
-      
-      span{
+
+      span {
         display: flex;
         align-items: center;
         font-size: 1.2rem;
@@ -124,4 +139,3 @@ export const Container = styled.div`
     }
   }
 `;
-

@@ -8,6 +8,12 @@ export const Container = styled.main`
   width: 100vw;
   min-height: 50vh;
   margin-top: 10rem;
+
+  .searchBoxSkeleton {
+    width: 70vw;
+    min-height: 10vh;
+    border-radius: 2rem;
+  }
 `;
 
 export const ContainerOfStreams = styled.section`
@@ -25,6 +31,19 @@ export const Paginator = styled.footer`
   padding: 2rem 4rem;
   justify-content: space-between;
   align-items: center;
+
+  .previousButtonSkeleton {
+    width: 22rem;
+    height: 4rem;
+  }
+  .pageInformationSkeleton {
+    width: 33rem;
+    height: 3rem;
+  }
+  .nextButtonSkeleton {
+    width: 22rem;
+    height: 4rem;
+  }
 `;
 
 export const PreviousPage = styled.button`
@@ -90,6 +109,18 @@ export const Card = styled.div`
   transition: 0.3s;
   padding: 1rem;
 
+  .imageCardSkeleton {
+    width: 22rem;
+    height: 34rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .titleCardSkeleton {
+    width: 15rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+  }
+
   &:hover {
     cursor: pointer;
     scale: 1.02;
@@ -119,6 +150,11 @@ export const ContainerNoStreams = styled.div`
   margin-top: 12vh;
   margin-bottom: 40vh;
 
+  .textExceptionSkeleton{
+    width: 48vw;
+    height: 5rem;
+  }
+
   h1 {
     font-size: 5rem;
     font-weight: bold;
@@ -140,7 +176,7 @@ export const SearchBox = styled.section`
     align-items: center;
     margin-bottom: 1.8rem;
 
-    input{
+    input {
       width: 70vw;
       height: 10vh;
       font-size: 2.5rem;
@@ -148,7 +184,7 @@ export const SearchBox = styled.section`
       padding-left: 2rem;
       border-radius: 2rem;
       border: none;
-      color: #0A0A0A;
+      color: #0a0a0a;
       font-weight: bold;
       font-style: italic;
     }

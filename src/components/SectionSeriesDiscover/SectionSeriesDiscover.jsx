@@ -12,6 +12,7 @@ import { post_path } from "../../variables/variables";
 import * as S from "../DiscoverStyles/DiscoverStyles";
 import { NavLink } from "react-router-dom";
 import { SearchBox } from "../SearchBox/SearchBox";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 export function SectionSeriesDiscover() {
   const [page, setPage] = useState(1);
@@ -20,6 +21,9 @@ export function SectionSeriesDiscover() {
   const [notPreviously, setNotPreviously] = useState(false);
   const [notNext, setNotNext] = useState(false);
   const [query, setQuery] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingOneTime, setIsLoadingOneTime] = useState(true);
+
   useEffect(() => {
     const requestSeriesDiscover = async () => {
       if (query == "") {
@@ -52,6 +56,18 @@ export function SectionSeriesDiscover() {
     }
   }, [page, totalPages, query]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  });
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoadingOneTime(false);
+    }, 2000);
+  });
+
   const toNextPage = () => {
     setPage(page + 1);
   };
@@ -60,48 +76,83 @@ export function SectionSeriesDiscover() {
     setPage(page - 1);
   };
 
-  const setTermToSearch = (e) => setQuery(e.target.value);
+  const setTermToSearch = (e) => {
+    setQuery(e.target.value);
+    setIsLoading(true);
+  };
 
   return (
-    <Container>
-      <SearchBox funtionSetSearch={setTermToSearch} />
-      {series.length !== 0 ? (
-        <ContainerOfStreams>
-          {series.map((serie, index) => (
-            <NavLink key={index} to={`/serie/${serie.id}`}>
-              <S.Card>
-                <S.ImagePost src={`${post_path}${serie.poster_path}`} alt="" />
-                <S.StreamTitle>{serie.name}</S.StreamTitle>
-              </S.Card>
-            </NavLink>
-          ))}
-        </ContainerOfStreams>
-      ) : (
-        <S.ContainerNoStreams>
-          <h1> Série não encontrada </h1>
-        </S.ContainerNoStreams>
-      )}
-      <Paginator>
-        <PreviousPage
-          onClick={() => {
-            toPreviousPage();
-          }}
-          disabled={notPreviously}
-        >
-          Voltar para página anterior
-        </PreviousPage>
-        <ActualPage>
-          Página <span> {page} </span> de <span> {totalPages} </span>
-        </ActualPage>
-        <NextPage
-          onClick={() => {
-            toNextPage();
-          }}
-          disabled={notNext}
-        >
-          Ir para próxima página
-        </NextPage>
-      </Paginator>
-    </Container>
+    <SkeletonTheme baseColor="#202020" highlightColor="#2b2a2a">
+      <Container>
+        {isLoadingOneTime ? (
+          <Skeleton className="searchBoxSkeleton" />
+        ) : (
+          <SearchBox funtionSetSearch={setTermToSearch} />
+        )}
+        {series.length !== 0 ? (
+          <ContainerOfStreams>
+            {series.map((serie, index) => (
+              <NavLink key={index} to={`/serie/${serie.id}`}>
+                <S.Card>
+                  {isLoading ? (
+                    <>
+                      <Skeleton className="imageCardSkeleton" />
+                      <Skeleton className="titleCardSkeleton" />
+                    </>
+                  ) : (
+                    <>
+                      <S.ImagePost
+                        src={`${post_path}${serie.poster_path}`}
+                        alt=""
+                      />
+                      <S.StreamTitle>{serie.name}</S.StreamTitle>{" "}
+                    </>
+                  )}
+                </S.Card>
+              </NavLink>
+            ))}
+          </ContainerOfStreams>
+        ) : (
+          <S.ContainerNoStreams>
+            <h1> <h1> {isLoading ? (
+                <Skeleton className="textExceptionSkeleton" />
+              ) : (
+                "Série não encontrada"
+              )} </h1> </h1>
+          </S.ContainerNoStreams>
+        )}
+        <Paginator>
+          {isLoading ? (
+            <>
+              <Skeleton className="previousButtonSkeleton" />
+              <Skeleton className="pageInformationSkeleton" />
+              <Skeleton className="nextButtonSkeleton" />
+            </>
+          ) : (
+            <>
+              <PreviousPage
+                onClick={() => {
+                  toPreviousPage();
+                }}
+                disabled={notPreviously}
+              >
+                Voltar para página anterior
+              </PreviousPage>
+              <ActualPage>
+                Página <span> {page} </span> de <span> {totalPages} </span>
+              </ActualPage>
+              <NextPage
+                onClick={() => {
+                  toNextPage();
+                }}
+                disabled={notNext}
+              >
+                Ir para próxima página
+              </NextPage>
+            </>
+          )}
+        </Paginator>
+      </Container>
+    </SkeletonTheme>
   );
 }
