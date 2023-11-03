@@ -30,6 +30,7 @@ export function SectionSliders() {
   const [popularFilme, setPopularFilme] = useState([]);
   const [filmesCinema, setFilmesCinema] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingButtons, setIsLoadingButtons] = useState(true);
 
   useEffect(() => {
     const data = async () => {
@@ -79,9 +80,14 @@ export function SectionSliders() {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 3000);
   }, [isLoading]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoadingButtons(false);
+    }, 2999);
+  }, [isLoadingButtons]);
   return (
     <S.Container>
       <SkeletonTheme baseColor="#202020" highlightColor="#2b2a2a">
@@ -105,7 +111,7 @@ export function SectionSliders() {
           </S.HeaderContainer>
           <S.ContainerGlider>
             <SkeletonTheme baseColor="#2A2A2A" highlightColor="#4d4d4d">
-              {isLoading ? (
+              {isLoadingButtons ? (
                 <Skeleton
                   circle
                   width={32}
@@ -153,7 +159,7 @@ export function SectionSliders() {
               ))}
             </Glider>
             <SkeletonTheme baseColor="#2A2A2A" highlightColor="#4d4d4d">
-              {isLoading ? (
+              {isLoadingButtons ? (
                 <Skeleton
                   circle
                   width={32}
@@ -189,7 +195,7 @@ export function SectionSliders() {
           </S.HeaderContainer>
           <S.ContainerGlider>
             <SkeletonTheme baseColor="#2A2A2A" highlightColor="#4d4d4d">
-              {isLoading ? (
+              {isLoadingButtons ? (
                 <Skeleton
                   circle
                   width={32}
@@ -237,7 +243,7 @@ export function SectionSliders() {
               ))}
             </Glider>
             <SkeletonTheme baseColor="#2A2A2A" highlightColor="#4d4d4d">
-              {isLoading ? (
+              {isLoadingButtons ? (
                 <Skeleton
                   circle
                   width={32}
@@ -273,7 +279,7 @@ export function SectionSliders() {
           </S.HeaderContainer>
           <S.ContainerGlider>
             <SkeletonTheme baseColor="#2A2A2A" highlightColor="#4d4d4d">
-              {isLoading ? (
+              {isLoadingButtons ? (
                 <Skeleton
                   circle
                   width={32}
@@ -321,7 +327,7 @@ export function SectionSliders() {
               ))}
             </Glider>
             <SkeletonTheme baseColor="#2A2A2A" highlightColor="#4d4d4d">
-              {isLoading ? (
+              {isLoadingButtons ? (
                 <Skeleton
                   circle
                   width={32}
@@ -357,7 +363,7 @@ export function SectionSliders() {
           </S.HeaderContainer>
           <S.ContainerGlider>
             <SkeletonTheme baseColor="#2A2A2A" highlightColor="#4d4d4d">
-              {isLoading ? (
+              {isLoadingButtons ? (
                 <Skeleton
                   circle
                   width={32}
@@ -405,7 +411,7 @@ export function SectionSliders() {
               ))}
             </Glider>
             <SkeletonTheme baseColor="#2A2A2A" highlightColor="#4d4d4d">
-              {isLoading ? (
+              {isLoadingButtons ? (
                 <Skeleton
                   circle
                   width={32}
@@ -441,7 +447,7 @@ export function SectionSliders() {
           </S.HeaderContainer>
           <S.ContainerGlider>
             <SkeletonTheme baseColor="#2A2A2A" highlightColor="#4d4d4d">
-              {isLoading ? (
+              {isLoadingButtons ? (
                 <Skeleton
                   circle
                   width={32}
@@ -489,7 +495,7 @@ export function SectionSliders() {
               ))}
             </Glider>
             <SkeletonTheme baseColor="#2A2A2A" highlightColor="#4d4d4d">
-              {isLoading ? (
+              {isLoadingButtons ? (
                 <Skeleton
                   circle
                   width={32}
