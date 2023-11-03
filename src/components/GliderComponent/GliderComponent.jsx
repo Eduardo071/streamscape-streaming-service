@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import * as S from "../HomeStyle/HomeStyle";
 import Skeleton from "react-loading-skeleton";
 import { post_path } from "../../variables/variables";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export function GliderComponents({ prev, next, arrayStream, streamType }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -46,10 +47,11 @@ export function GliderComponents({ prev, next, arrayStream, streamType }) {
               </>
             ) : (
               <>
-                <img
+                <LazyLoadImage
                   src={`${post_path}${stream.poster_path}`}
-                  alt="poster do filme"
+                  alt={`${streamType} poster`}
                   ref={(el) => (posterImages.current[index] = el)}
+                  effect="blur"
                 />
                 <h1>
                   {stream.title ? stream.title : stream.name} (
