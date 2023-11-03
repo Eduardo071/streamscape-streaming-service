@@ -17,13 +17,39 @@ export const InfoFilmeContainer = styled.section`
     justify-content: center;
     gap: 1rem;
 
+    .PosterImageSkeleton {
+      width: 80rem;
+      height: 45rem;
+    }
+    .PosterTitleSkeleton {
+      width: 65rem;
+      height: 3rem;
+      margin-top: 1rem;
+    }
+
+    .movieNoBackdropImage {
+      width: 73rem;
+      height: 45rem;
+      border: solid 4px #000033;
+      border-radius: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      h1 {
+        color: #fff;
+        font-size: 4rem;
+        font-weight: bold;
+      }
+    }
+
     img {
       width: 80rem;
     }
 
     h2 {
       color: white;
-      font-size: 3.5rem;
+      font-size: 3rem;
     }
   }
 
@@ -37,8 +63,20 @@ export const InfoFilmeContainer = styled.section`
     margin-top: 1rem;
     font-size: 2.2rem;
 
+    p {
+      font-size: 1.5rem;
+
+      .classificationSkeleton {
+        width: 28rem;
+      }
+
+      .genresSkeleton {
+        width: 5rem;
+        margin-left: 0.3rem;
+      }
+    }
+
     div,
-    p,
     span {
       font-size: 1.5rem;
     }
@@ -53,6 +91,10 @@ export const InfoFilmeContainer = styled.section`
         display: flex;
         align-items: center;
 
+        .imdbSkeleton {
+          width: 10rem;
+          margin-left: 2rem;
+        }
         .imdb {
           span:first-child {
             font-weight: 700;
@@ -108,9 +150,9 @@ export const MidiaFilmeContainer = styled.section`
   span {
     font-size: 1.6rem;
   }
-
-  .trailer {
-    border-radius: 16px;
+  .trailer,
+  .trailerSkeleton {
+    border-radius: 1.6rem;
     margin-top: 8rem;
     width: 90rem;
     height: 50rem;
@@ -166,10 +208,16 @@ export const CollectionStreamsContainer = styled.section`
       scale: 1.02;
     }
 
-    img {
+    img,
+    .imageMovieCollectionSkeleton {
       width: 20rem;
       height: 30rem;
       border-radius: 1rem;
+    }
+
+    .titleMovieCollectionSkeleton{
+      width: 15rem;
+      height: 2rem;
     }
 
     .noImage {

@@ -6,10 +6,12 @@ import {
 import { NavLink, useParams } from "react-router-dom";
 import { post_path } from "../../variables/variables";
 import { api_key } from "../../api/API_KEY";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 export function DescricaoCollection() {
   const [collection, setCollection] = useState([]);
   const [collectionDetails, setCollectionDetails] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { idCollection } = useParams();
 
   useEffect(() => {
@@ -26,41 +28,68 @@ export function DescricaoCollection() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  });
   return (
     <>
-      <InfoFilmeContainer>
-        <section>
-          <img
-            src={`${post_path}${collectionDetails.backdrop_path}`}
-            alt="poster oficial do filme"
-          />
-
-          <h2>{collectionDetails.name}</h2>
-        </section>
-
-        <section>
-          <p>{collectionDetails.overview}</p>
-        </section>
-      </InfoFilmeContainer>
-      <CollectionStreamsContainer>
-        {collection.map((movie, index) => (
-          <NavLink to={`/movie/${movie.id}`} key={index}>
-            <div>
-              {movie.poster_path !== null ? (
+      <SkeletonTheme baseColor="#202020" highlightColor="#2b2a2a">
+        <InfoFilmeContainer>
+          <section>
+            {isLoading ? (
+              <>
+                <Skeleton className="PosterImageSkeleton" />
+                <Skeleton className="PosterTitleSkeleton" />
+              </>
+            ) : collectionDetails.backdrop_path ? (
+              <>
                 <img
-                  src={`${post_path}${movie.poster_path}`}
-                  alt="imagem do filme"
+                  src={`${post_path}${collectionDetails.backdrop_path}`}
+                  alt="poster oficial da série"
                 />
-              ) : (
-                <div className="noImage">
-                  <h1>Em Breve 🫣</h1>
+
+                <h2>{collectionDetails.name}</h2>
+              </>
+            ) : (
+              <>
+                <div className="movieNoBackdropImage">
+                  <h1>Imagem indisponível 😢</h1>
                 </div>
-              )}
-              <h1>{movie.title}</h1>
-            </div>
-          </NavLink>
-        ))}
-      </CollectionStreamsContainer>
+
+                <h2>{collectionDetails.name}</h2>
+              </>
+            )}
+          </section>
+
+          <section>
+            <p>{isLoading ? <Skeleton /> : collectionDetails.overview}</p>
+          </section>
+        </InfoFilmeContainer>
+        <CollectionStreamsContainer>
+          {collection.map((movie, index) => (
+            <NavLink to={`/movie/${movie.id}`} key={index}>
+              <div>
+                {isLoading ? (
+                  <Skeleton className="imageMovieCollectionSkeleton" />
+                ) : movie.poster_path !== null ? (
+                  <img
+                    src={`${post_path}${movie.poster_path}`}
+                    alt="imagem do filme"
+                  />
+                ) : (
+                  <div className="noImage">
+                    <h1>Em Breve 🫣</h1>
+                  </div>
+                )}
+                <h1>{isLoading ? <Skeleton className="titleMovieCollectionSkeleton"/> : movie.title}</h1>
+              </div>
+            </NavLink>
+          ))}
+        </CollectionStreamsContainer>
+      </SkeletonTheme>
     </>
   );
 }

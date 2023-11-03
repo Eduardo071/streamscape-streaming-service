@@ -107,7 +107,8 @@ export const Card = styled.div`
   justify-content: center;
   align-items: center;
   transition: 0.3s;
-  padding: 1rem;
+  margin: 1rem;
+  overflow: hidden;
 
   .imageCardSkeleton {
     width: 22rem;
@@ -132,6 +133,23 @@ export const ImagePost = styled.img`
   border-radius: 0.5rem;
 `;
 
+export const NoImagePost = styled.div`
+  width: 22rem;
+  height: 31.4rem;
+  border-radius: 0.5rem;
+  border: solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.8rem;
+  }
+`;
+
 export const StreamTitle = styled.h1`
   font-size: 1.6rem;
   color: #fff;
@@ -150,7 +168,7 @@ export const ContainerNoStreams = styled.div`
   margin-top: 12vh;
   margin-bottom: 40vh;
 
-  .textExceptionSkeleton{
+  .textExceptionSkeleton {
     width: 48vw;
     height: 5rem;
   }

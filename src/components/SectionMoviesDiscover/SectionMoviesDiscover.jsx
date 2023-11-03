@@ -59,25 +59,28 @@ export function SectionMoviesDiscover() {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 3000);
   }, [movies]);
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoadingOneTime(false);
-    }, 2000);
+    }, 3000);
   });
 
   const toNextPage = () => {
     setPage(page + 1);
+    setIsLoading(true);
   };
 
   const toPreviousPage = () => {
     setPage(page - 1);
+    setIsLoading(true);
   };
 
   const setTermToSearch = (e) => {
-    setQuery(e.target.value)
+    setQuery(e.target.value);
+    setPage(totalPages / totalPages);
     setIsLoading(true);
   };
   return (
@@ -100,11 +103,18 @@ export function SectionMoviesDiscover() {
                     </>
                   ) : (
                     <>
-                      <S.ImagePost
-                        src={`${post_path}${movie.poster_path}`}
-                        alt=""
-                      />
-                      <S.StreamTitle>{movie.title}</S.StreamTitle>
+                      {movie.poster_path ? (
+                        <S.ImagePost
+                          src={`${post_path}${movie.poster_path}`}
+                          alt=""
+                        />
+                      ) : (
+                        <S.NoImagePost>
+                          <h1>Imagem indisponível 😢</h1>
+                        </S.NoImagePost>
+                      )}
+                      <S.StreamTitle>{movie.name}</S.StreamTitle>
+                      
                     </>
                   )}
                 </S.Card>
@@ -113,11 +123,14 @@ export function SectionMoviesDiscover() {
           </ContainerOfStreams>
         ) : (
           <S.ContainerNoStreams>
-            <h1> {isLoading ? (
+            <h1>
+              {" "}
+              {isLoading ? (
                 <Skeleton className="textExceptionSkeleton" />
               ) : (
                 "Filme não encontrado"
-              )} </h1>
+              )}{" "}
+            </h1>
           </S.ContainerNoStreams>
         )}
 

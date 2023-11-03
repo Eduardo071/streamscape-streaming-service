@@ -49,25 +49,28 @@ export function SectionCollectionsDiscover() {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 3000);
   });
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoadingOneTime(false);
-    }, 2000);
+    }, 3000);
   });
 
   const toNextPage = () => {
     setPage(page + 1);
+    setIsLoading(true);
   };
 
   const toPreviousPage = () => {
     setPage(page - 1);
+    setIsLoading(true);
   };
 
   const setTermToSearch = (e) => {
     setQuery(e.target.value);
+    setPage(totalPages / totalPages)
     setIsLoading(true);
   };
   return (
@@ -89,12 +92,19 @@ export function SectionCollectionsDiscover() {
                       <Skeleton className="titleCardSkeleton" />
                     </>
                   ) : (
-                    <>
-                      <S.ImagePost
-                        src={`${post_path}${collection.poster_path}`}
-                        alt=""
-                      />
+<>
+                      {collection.poster_path ? (
+                        <S.ImagePost
+                          src={`${post_path}${collection.poster_path}`}
+                          alt=""
+                        />
+                      ) : (
+                        <S.NoImagePost>
+                          <h1>Imagem indisponível 😢</h1>
+                        </S.NoImagePost>
+                      )}
                       <S.StreamTitle>{collection.name}</S.StreamTitle>
+                      
                     </>
                   )}
                 </S.Card>

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Filme from "./Filme";
 import Home from "./Home";
-import { Profile } from "./Profile";
+// import { Profile } from "./Profile";
 import { Planos } from "./Planos";
 import { Filmes } from "./Filmes";
 import { Series } from "./Series";
@@ -9,7 +9,7 @@ import Serie from "./Serie";
 import Collection from "./Collection";
 import { Collections } from "./Collections";
 
-//  Função de Rotas
+
 export default function AppRoutes() {
   return (
     <BrowserRouter>
@@ -22,7 +22,7 @@ export default function AppRoutes() {
         <Route exact path="/movies/discover" element={<Filmes />} />
         <Route exact path="/series/discover" element={<Series />} />
         <Route exact path="/collections/discover" element={<Collections />} />
-        <Route exact path="/profile" element={<Profile />} />
+        {/* <Route exact path="/profile" element={<Profile />} /> */}
         <Route exact path="/planos" element={<Planos />} />
       </Routes>
     </BrowserRouter>

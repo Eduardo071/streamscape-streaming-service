@@ -33,6 +33,7 @@ export function SectionSeriesDiscover() {
         const data = await response.json();
         setSeries(data.results);
         setTotalPages(data.total_pages);
+        window.scrollTo(0, 0);
       } else {
         const response = await fetch(
           `https://api.themoviedb.org/3/search/tv?api_key=${api_key}&query=${query}&language=pt-BR&page=${page}`,
@@ -41,9 +42,9 @@ export function SectionSeriesDiscover() {
         setSeries(data.results);
         setTotalPages(data.total_pages);
       }
+      window.scrollTo(0, 0);
     };
     requestSeriesDiscover();
-    window.scrollTo(0, 0);
     if (page === 1) {
       setNotPreviously(true);
     } else {
@@ -59,25 +60,28 @@ export function SectionSeriesDiscover() {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 3000);
   });
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoadingOneTime(false);
-    }, 2000);
+    }, 3000);
   });
 
   const toNextPage = () => {
     setPage(page + 1);
+    setIsLoading(true);
   };
 
   const toPreviousPage = () => {
     setPage(page - 1);
+    setIsLoading(true);
   };
 
   const setTermToSearch = (e) => {
     setQuery(e.target.value);
+    setPage(totalPages / totalPages);
     setIsLoading(true);
   };
 
@@ -101,11 +105,18 @@ export function SectionSeriesDiscover() {
                     </>
                   ) : (
                     <>
-                      <S.ImagePost
-                        src={`${post_path}${serie.poster_path}`}
-                        alt=""
-                      />
-                      <S.StreamTitle>{serie.name}</S.StreamTitle>{" "}
+                      {serie.poster_path ? (
+                        <S.ImagePost
+                          src={`${post_path}${serie.poster_path}`}
+                          alt=""
+                        />
+                      ) : (
+                        <S.NoImagePost>
+                          <h1>Imagem indisponível 😢</h1>
+                        </S.NoImagePost>
+                      )}
+                      <S.StreamTitle>{serie.name}</S.StreamTitle>
+                      
                     </>
                   )}
                 </S.Card>
@@ -114,11 +125,13 @@ export function SectionSeriesDiscover() {
           </ContainerOfStreams>
         ) : (
           <S.ContainerNoStreams>
-            <h1> <h1> {isLoading ? (
+            <h1>
+              {isLoading ? (
                 <Skeleton className="textExceptionSkeleton" />
               ) : (
                 "Série não encontrada"
-              )} </h1> </h1>
+              )}
+            </h1>
           </S.ContainerNoStreams>
         )}
         <Paginator>
