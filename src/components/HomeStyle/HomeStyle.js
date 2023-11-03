@@ -341,6 +341,7 @@ export const ContainerOfferText = styled.div`
       rgba(102, 51, 102, 1) 0%,
       rgba(153, 0, 0, 1) 100%
     );
+    overflow: hidden;
 
     &:hover {
       cursor: pointer;
