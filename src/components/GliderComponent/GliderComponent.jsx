@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import * as S from "../HomeStyle/HomeStyle";
 import Skeleton from "react-loading-skeleton";
-import { post_path } from "../../variables/variables";
+import {  post_path_500 } from "../../variables/variables";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export function GliderComponents({ prev, next, arrayStream, streamType }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,7 +20,7 @@ export function GliderComponents({ prev, next, arrayStream, streamType }) {
       if (allImagesLoaded) {
         setTimeout(() => {
           setIsLoading(false);
-        }, 1999);
+        }, 2500);
       }
     };
 
@@ -27,6 +28,7 @@ export function GliderComponents({ prev, next, arrayStream, streamType }) {
       checkAllImagesLoaded();
     }
   }, [isLoading]);
+
   return (
     <Glider
       hasArrows
@@ -48,7 +50,7 @@ export function GliderComponents({ prev, next, arrayStream, streamType }) {
             ) : (
               <>
                 <LazyLoadImage
-                  src={`${post_path}${stream.poster_path}`}
+                  src={`${post_path_500}${stream.poster_path}`}
                   alt={`${streamType} poster`}
                   ref={(el) => (posterImages.current[index] = el)}
                   effect="blur"

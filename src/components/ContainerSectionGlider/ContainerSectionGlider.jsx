@@ -4,14 +4,20 @@ import { ArrowCircleLeft, ArrowCircleRight } from "phosphor-react";
 import { useEffect, useState } from "react";
 import { GliderComponents } from "../GliderComponent/GliderComponent";
 
-export function ContainerSectionGlider({labelTitle, prev, next, arrayStream, streamType }) {
+export function ContainerSectionGlider({
+  labelTitle,
+  prev,
+  next,
+  arrayStream,
+  streamType,
+}) {
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect((() => {
+  useEffect(() => {
     setTimeout(() => {
-        setIsLoading(false);
+      setIsLoading(false);
     }, 1999);
-  }))
+  }, []);
 
   return (
     <S.ContainerSection>
@@ -40,14 +46,15 @@ export function ContainerSectionGlider({labelTitle, prev, next, arrayStream, str
               style={{ margin: "1rem" }}
             />
           ) : (
-            <ArrowCircleLeft
-              ref={prev}
-              size={32}
-              color="#fcfcfc"
-            />
+            <ArrowCircleLeft ref={prev} size={32} color="#fcfcfc" />
           )}
         </SkeletonTheme>
-        <GliderComponents prev={prev} next={next} arrayStream={arrayStream} streamType={streamType} />
+        <GliderComponents
+          prev={prev}
+          next={next}
+          arrayStream={arrayStream}
+          streamType={streamType}
+        />
         <SkeletonTheme baseColor="#2A2A2A" highlightColor="#4d4d4d">
           {isLoading ? (
             <Skeleton
@@ -57,11 +64,7 @@ export function ContainerSectionGlider({labelTitle, prev, next, arrayStream, str
               style={{ margin: "1rem" }}
             />
           ) : (
-            <ArrowCircleRight
-              ref={next}
-              size={32}
-              color="#fcfcfc"
-            />
+            <ArrowCircleRight ref={next} size={32} color="#fcfcfc" />
           )}
         </SkeletonTheme>
       </S.ContainerGlider>

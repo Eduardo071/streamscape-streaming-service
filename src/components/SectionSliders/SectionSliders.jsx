@@ -85,6 +85,8 @@ export function SectionSliders() {
       setIsLoadingButtons(false);
     }, 2999);
   }, [isLoadingButtons]);
+
+  
   return (
     <S.Container>
       <SkeletonTheme baseColor="#202020" highlightColor="#2b2a2a">
