@@ -56,14 +56,11 @@ export function DescricaoSerie() {
     };
     if (dublagemDisponiveis !== null) requestIdTrailerSerie();
   }, [serie, idSerie, dublagemDisponiveis]);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 2000);
   });
   return (
     <>

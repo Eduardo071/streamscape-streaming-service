@@ -197,7 +197,7 @@ export const CollectionStreamsContainer = styled.section`
     flex-direction: column;
     gap: 0.5rem;
     align-items: center;
-    padding: 2rem;
+    margin: 2rem;
     transition: 0.3s;
     overflow: hidden;
     width: 25rem;

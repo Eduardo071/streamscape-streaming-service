@@ -49,7 +49,7 @@ export function HomeHeader() {
           </li> */}
           <li>
             {isLoading ? (
-              <Skeleton width={40} height={40} circle/>
+              <Skeleton width={40} height={40} circle />
             ) : (
               <button>
                 <MagnifyingGlass size={32} color="#fcfcfc" />

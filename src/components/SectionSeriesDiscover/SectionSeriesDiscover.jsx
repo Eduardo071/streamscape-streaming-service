@@ -8,11 +8,13 @@ import {
   PreviousPage,
 } from "../DiscoverStyles/DiscoverStyles";
 import { api_key } from "../../api/API_KEY";
-import { post_path } from "../../variables/variables";
+import { post_path_500 } from "../../variables/variables";
 import * as S from "../DiscoverStyles/DiscoverStyles";
 import { NavLink } from "react-router-dom";
 import { SearchBox } from "../SearchBox/SearchBox";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export function SectionSeriesDiscover() {
   const [page, setPage] = useState(1);
@@ -60,13 +62,13 @@ export function SectionSeriesDiscover() {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 2000);
   });
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoadingOneTime(false);
-    }, 3000);
+    }, 2000);
   });
 
   const toNextPage = () => {
@@ -106,9 +108,11 @@ export function SectionSeriesDiscover() {
                   ) : (
                     <>
                       {serie.poster_path ? (
-                        <S.ImagePost
-                          src={`${post_path}${serie.poster_path}`}
+                        <LazyLoadImage
+                          src={`${post_path_500}${serie.poster_path}`}
                           alt=""
+                          style={{width: "22rem", borderRadius: "0.5rem"}}
+                          effect="blur"
                         />
                       ) : (
                         <S.NoImagePost>

@@ -4,9 +4,11 @@ import {
   CollectionStreamsContainer,
 } from "../DescricaoFilmeStyle/styles";
 import { NavLink, useParams } from "react-router-dom";
-import { post_path } from "../../variables/variables";
+import { post_path_500, post_path } from "../../variables/variables";
 import { api_key } from "../../api/API_KEY";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export function DescricaoCollection() {
   const [collection, setCollection] = useState([]);
@@ -25,14 +27,11 @@ export function DescricaoCollection() {
     };
     requestIdTrailerCollection();
   }, [collection, idCollection]);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+  
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 2000);
   });
   return (
     <>
@@ -46,9 +45,10 @@ export function DescricaoCollection() {
               </>
             ) : collectionDetails.backdrop_path ? (
               <>
-                <img
+                <LazyLoadImage
                   src={`${post_path}${collectionDetails.backdrop_path}`}
                   alt="poster oficial da série"
+                  effect="blur"
                 />
 
                 <h2>{collectionDetails.name}</h2>
@@ -65,7 +65,7 @@ export function DescricaoCollection() {
           </section>
 
           <section>
-            <p>{isLoading ? <Skeleton /> : collectionDetails.overview}</p>
+            <p>{isLoading ? <Skeleton count={3} /> : collectionDetails.overview}</p>
           </section>
         </InfoFilmeContainer>
         <CollectionStreamsContainer>
@@ -75,16 +75,24 @@ export function DescricaoCollection() {
                 {isLoading ? (
                   <Skeleton className="imageMovieCollectionSkeleton" />
                 ) : movie.poster_path !== null ? (
-                  <img
-                    src={`${post_path}${movie.poster_path}`}
+                  <LazyLoadImage
+                    src={`${post_path_500}${movie.poster_path}`}
                     alt="imagem do filme"
+                    style={{ width: "20rem", borderRadius: "0.5rem", overflow: "hidden" }}
+                    effect="blur"
                   />
                 ) : (
                   <div className="noImage">
                     <h1>Em Breve 🫣</h1>
                   </div>
                 )}
-                <h1>{isLoading ? <Skeleton className="titleMovieCollectionSkeleton"/> : movie.title}</h1>
+                <h1>
+                  {isLoading ? (
+                    <Skeleton className="titleMovieCollectionSkeleton" />
+                  ) : (
+                    movie.title
+                  )}
+                </h1>
               </div>
             </NavLink>
           ))}
