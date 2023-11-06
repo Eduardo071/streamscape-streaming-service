@@ -8,7 +8,7 @@ import {
   PreviousPage,
 } from "../DiscoverStyles/DiscoverStyles";
 import { api_key } from "../../api/API_KEY";
-import { post_path_500 } from "../../variables/variables";
+import { post_path_342 } from "../../variables/variables";
 import * as S from "../DiscoverStyles/DiscoverStyles";
 import { NavLink } from "react-router-dom";
 import { SearchBox } from "../SearchBox/SearchBox";
@@ -109,7 +109,7 @@ export function SectionSeriesDiscover() {
                     <>
                       {serie.poster_path ? (
                         <LazyLoadImage
-                          src={`${post_path_500}${serie.poster_path}`}
+                          src={`${post_path_342}${serie.poster_path}`}
                           alt=""
                           style={{width: "22rem", borderRadius: "0.5rem"}}
                           effect="blur"
