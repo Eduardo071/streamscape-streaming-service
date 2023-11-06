@@ -111,7 +111,6 @@ export function SectionMoviesDiscover() {
                           alt=""
                           style={{ width: "22rem", borderRadius: "0.5rem" }}
                           effect="blur"
-                          onLoad={() => setIsLoading(false)}
                         />
                       ) : (
                         <S.NoImagePost>
