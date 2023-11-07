@@ -1,53 +1,67 @@
 import { useCallback, useEffect, useState } from "react";
 import { data } from "../../api/request_data";
-import { post_path } from "../../variables/variables";
+import {
+  paramsBase,
+  post_path,
+  urlMovieSearchById,
+  urlSerieSearchById,
+} from "../../variables/variables";
 import * as S from "../HomeStyle/HomeStyle";
 import { Play } from "phosphor-react";
-import { movie_data } from "../../api/movie_details";
 import { NavLink } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import 'react-loading-skeleton/dist/skeleton.css'
+import "react-loading-skeleton/dist/skeleton.css";
 
 export function Hero() {
-  const [movies, setMovies] = useState([]);
-  const [movieId, setMovieId] = useState([]);
-  const [runtimes, setRuntimes] = useState([]);
+  const [stream, setStream] = useState([]);
+  const [streamDetails, setStreamDetails] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const post_data = async () => {
       const arrayData = await data();
-      setMovies(arrayData);
-      const movieIds = arrayData.map((movie) => movie.id);
-      setMovieId(movieIds);
+      setStream(arrayData);
     };
     post_data();
   }, []);
 
   useEffect(() => {
-    if (movieId.length > 0) {
-      const fetchRuntimes = async () => {
-        await Promise.all(
-          movieId.map(async (movieId) => {
-            const movieData = await movie_data(movieId);
-            setRuntimes((prevRuntimes) => [...prevRuntimes, movieData.runtime]);
-          }),
-        );
-      };
+    const fetchData = async () => {
+      const details = [];
 
-      fetchRuntimes();
-    }
-  }, [movieId, movies.length]);
+      for (const item of stream) {
+        let streamData;
+        if (item.media_type === "movie") {
+          streamData = await fetch(
+            `${urlMovieSearchById}${item.id}${paramsBase}`,
+          ).then((data) => data.json());
+        } else if (item.media_type === "tv") {
+          streamData = await fetch(
+            `${urlSerieSearchById}${item.id}${paramsBase}`,
+          ).then((data) => data.json());
+        }
+        details.push(streamData);
+      }
+      setStreamDetails(details);
+    };
+    fetchData();
+  }, [stream, streamDetails]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3500);
+  });
 
   const nextMovie = useCallback(() => {
     if (!isPaused) {
       setCurrentMovieIndex((prevIndex) =>
-        prevIndex === movies.length - 1 ? 0 : prevIndex + 1,
+        prevIndex === stream.length - 1 ? 0 : prevIndex + 1,
       );
     }
-  }, [isPaused, movies]);
+  }, [stream, isPaused]);
 
   useEffect(() => {
     const timer = setInterval(nextMovie, 5000);
@@ -55,45 +69,53 @@ export function Hero() {
     return () => {
       clearInterval(timer);
     };
-  }, [isPaused, nextMovie]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
-  });
+  }, [nextMovie]);
 
   return (
     <SkeletonTheme baseColor="#202020" highlightColor="#2b2a2a">
-      <S.ContainerHero
+      <div
+        className="carousel"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
         {isLoading ? (
-          <Skeleton className="HeroMainSkeleton" />
+          <Skeleton style={{ width: "100vw", height: "91vh" }} />
         ) : (
-          movies.map((movie, index) => (
+          streamDetails.map((stream, index) => (
             <S.Hero
-              key={index}
               style={{
-                backgroundImage:
-                  `url('${post_path}${movie.backdrop_path}')` || <Skeleton />,
+                backgroundImage: `url('${post_path}${stream.backdrop_path}')`,
                 display: index === currentMovieIndex ? "flex" : "none",
               }}
+              key={index}
             >
               <S.HeroGradientOverlay />
               <S.DescFilme>
-                <h1>{movie.title}</h1>
-                <p>{movie.overview}</p>
+                <h1>{stream.title ? stream.title : stream.name}</h1>
+                <p>{stream.overview}</p>
                 <h3>
                   <S.ImdbLogo>IMBD </S.ImdbLogo>
-                  {movie.vote_average.toFixed(1)} | {movie.release_date} |{" "}
-                  {runtimes[index] ? `${runtimes[index]} min` : "Carregando..."}
+                  {stream.vote_average.toFixed(1)} |{" "}
+                  {stream.release_date
+                    ? stream.release_date
+                    : stream.first_air_date}{" "}
+                  |{" "}
+                  {stream.runtime
+                    ? `${stream.runtime} min`
+                    : stream.number_of_seasons
+                    ? `${stream.number_of_seasons} temporada(s)`
+                    : "Carregando..."}
                 </h3>
               </S.DescFilme>
               <S.NavBarFilme>
                 <button>
-                  <NavLink to={`/movie/${movie.id}`}>
+                  <NavLink
+                    to={
+                      stream.title
+                        ? `/movie/${stream.id}`
+                        : `/serie/${stream.id}`
+                    }
+                  >
                     <Play size={32} color="#fcfcfc" />
                   </NavLink>
                 </button>
@@ -104,7 +126,7 @@ export function Hero() {
             </S.Hero>
           ))
         )}
-      </S.ContainerHero>
+      </div>
     </SkeletonTheme>
   );
 }
