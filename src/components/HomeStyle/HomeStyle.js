@@ -64,18 +64,10 @@ export const MenuOptions = styled.ul`
   }
 `;
 
-export const ContainerHero = styled.div`
-  .HeroMainSkeleton {
-    width: 100vw;
-    height: 91.5vh;
-  }
-`;
-
 export const Hero = styled.main`
   margin-top: 10vh;
   width: 100vw;
   height: 81vh;
-  background: linear-gradient(to right, black, transparent);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;

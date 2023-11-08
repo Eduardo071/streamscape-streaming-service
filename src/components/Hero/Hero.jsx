@@ -11,6 +11,7 @@ import { Play } from "phosphor-react";
 import { NavLink } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export function Hero() {
   const [stream, setStream] = useState([]);
@@ -52,7 +53,7 @@ export function Hero() {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 3500);
+    }, 2500);
   });
 
   const nextMovie = useCallback(() => {
@@ -64,7 +65,7 @@ export function Hero() {
   }, [stream, isPaused]);
 
   useEffect(() => {
-    const timer = setInterval(nextMovie, 5000);
+    const timer = setInterval(nextMovie, 6000);
 
     return () => {
       clearInterval(timer);
@@ -84,13 +85,19 @@ export function Hero() {
           streamDetails.map((stream, index) => (
             <S.Hero
               style={{
-                backgroundImage: `url('${post_path}${stream.backdrop_path}')`,
                 display: index === currentMovieIndex ? "flex" : "none",
+                position: "relative",
               }}
               key={index}
             >
+              <LazyLoadImage
+                src={`${post_path}${stream.backdrop_path}`}
+                alt="imagem do filme"
+                style={{ width: "100vw", height: "81vh", position: "absolute", top: '0', left: '0', zIndex: '0', objectFit: 'cover'}}
+                effect="opacity"
+              />
               <S.HeroGradientOverlay />
-              <S.DescFilme>
+              <S.DescFilme style={{zIndex: '1'}}>
                 <h1>{stream.title ? stream.title : stream.name}</h1>
                 <p>{stream.overview}</p>
                 <h3>
@@ -107,7 +114,7 @@ export function Hero() {
                     : "Carregando..."}
                 </h3>
               </S.DescFilme>
-              <S.NavBarFilme>
+              <S.NavBarFilme style={{zIndex: '1'}}>
                 <button>
                   <NavLink
                     to={
