@@ -93,7 +93,15 @@ export function DescricaoSerie() {
           </section>
 
           <section>
-            <p>{isLoading ? <Skeleton count={3} /> : serie.overview}</p>
+            <p>
+              {isLoading ? (
+                <Skeleton count={3} />
+              ) : serie.overview ? (
+                serie.overview
+              ) : (
+                "Descrição indisponível 😢"
+              )}
+            </p>
 
             <div className="info-filme">
               <p>

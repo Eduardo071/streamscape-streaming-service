@@ -93,13 +93,25 @@ export function Hero() {
               <LazyLoadImage
                 src={`${post_path}${stream.backdrop_path}`}
                 alt="imagem do filme"
-                style={{ width: "100vw", height: "81vh", position: "absolute", top: '0', left: '0', zIndex: '0', objectFit: 'cover'}}
+                style={{
+                  width: "100vw",
+                  height: "81vh",
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  zIndex: "0",
+                  objectFit: "cover",
+                }}
                 effect="opacity"
               />
               <S.HeroGradientOverlay />
-              <S.DescFilme style={{zIndex: '1'}}>
+              <S.DescFilme style={{ zIndex: "1" }}>
                 <h1>{stream.title ? stream.title : stream.name}</h1>
-                <p>{stream.overview}</p>
+                <p>
+                  {stream.overview
+                    ? stream.overview
+                    : "Descrição indisponível 😢"}
+                </p>
                 <h3>
                   <S.ImdbLogo>IMBD </S.ImdbLogo>
                   {stream.vote_average.toFixed(1)} |{" "}
@@ -114,7 +126,7 @@ export function Hero() {
                     : "Carregando..."}
                 </h3>
               </S.DescFilme>
-              <S.NavBarFilme style={{zIndex: '1'}}>
+              <S.NavBarFilme style={{ zIndex: "1" }}>
                 <button>
                   <NavLink
                     to={

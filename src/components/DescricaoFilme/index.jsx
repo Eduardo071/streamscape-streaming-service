@@ -92,7 +92,15 @@ export function DescricaoFilmeSct() {
           </section>
 
           <section>
-            <p>{isLoading ? <Skeleton count={3} /> : movie.overview}</p>
+            <p>
+              {isLoading ? (
+                <Skeleton count={3} />
+              ) : movie.overview ? (
+                movie.overview
+              ) : (
+                "Descrição indisponível 😢"
+              )}
+            </p>
 
             <div className="info-filme">
               <p>

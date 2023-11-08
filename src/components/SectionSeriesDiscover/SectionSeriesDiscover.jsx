@@ -111,7 +111,7 @@ export function SectionSeriesDiscover() {
                         <LazyLoadImage
                           src={`${post_path_342}${serie.poster_path}`}
                           alt=""
-                          style={{width: "22rem", borderRadius: "0.5rem"}}
+                          style={{ width: "22rem", borderRadius: "0.5rem" }}
                           effect="blur"
                         />
                       ) : (
@@ -120,7 +120,6 @@ export function SectionSeriesDiscover() {
                         </S.NoImagePost>
                       )}
                       <S.StreamTitle>{serie.name}</S.StreamTitle>
-                      
                     </>
                   )}
                 </S.Card>
