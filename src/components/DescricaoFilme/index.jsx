@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import {
+  ButtonPlayerStream,
   InfoFilmeContainer,
   MidiaFilmeContainer,
   MidiaFilmeContainerNoTrailer,
 } from "../DescricaoFilmeStyle/styles";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   paramsBase,
   post_path,
@@ -12,6 +13,7 @@ import {
 } from "../../variables/variables";
 import { api_key } from "../../api/API_KEY";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { Play } from "phosphor-react";
 
 export function DescricaoFilmeSct() {
   const [movie, setMovie] = useState([]);
@@ -20,7 +22,37 @@ export function DescricaoFilmeSct() {
   const [dublagemDisponiveis, setDublagemDisponiveis] = useState([]);
   const [movieIdTrailer, setMovieIdTrailer] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [streamsWithVideo, setStreamsWithVideo] = useState([]);
+  const [streamWithVideo, setStreamWithVideo] = useState([]);
+  const [playButtonRender, setPlayButtonRender] = useState(false);
   const { idMovie } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const requestStreamVideo = async () => {
+      const response = await fetch(
+        "https://streamscape-api.onrender.com/movies",
+      );
+      const data = await response.json();
+      setStreamsWithVideo(data);
+    };
+    requestStreamVideo();
+
+    const thisStreamHasVideo = streamsWithVideo.some(
+      (stream) => stream.external_id,
+    );
+
+    if (thisStreamHasVideo) {
+      const streamWithContent = streamsWithVideo.find(
+        (stream) => stream.external_id === movie.id,
+      );
+      setStreamWithVideo(streamWithContent); //
+      setPlayButtonRender(true);
+    } else {
+      setPlayButtonRender(false);
+    }
+  }, [playButtonRender, streamsWithVideo, movie]);
+
   useEffect(() => {
     const requestApiMovieId = async () => {
       const response = await fetch(
@@ -40,7 +72,9 @@ export function DescricaoFilmeSct() {
       const response = await fetch(
         `https://api.themoviedb.org/3/movie/${idMovie}/videos?api_key=${api_key}&language=pt-BR`,
       );
+
       const dataPtBR = await response.json();
+
       if (
         dataPtBR.results[0] === undefined ||
         dataPtBR.results[0] === null ||
@@ -50,17 +84,28 @@ export function DescricaoFilmeSct() {
           `https://api.themoviedb.org/3/movie/${idMovie}/videos?api_key=${api_key}`,
         );
         const dataEN = await responseEN.json();
-        setMovieIdTrailer(dataEN.results[0].key);
+
+        if (dataEN.results[0] && dataEN.results[0].key) {
+          setMovieIdTrailer(dataEN.results[0].key);
+        }
+      } else {
+        setMovieIdTrailer(dataPtBR.results[0].key);
       }
-      setMovieIdTrailer(dataPtBR.results[0].key);
     };
+
     if (dublagemDisponiveis !== null) requestIdTrailerMovie();
-  }, [movie, idMovie, dublagemDisponiveis]);
+  }, [idMovie, dublagemDisponiveis]);
+
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
     }, 2000);
   });
+
+  const handlePlayButtonClick = () => {
+    navigate(`/play/${streamWithVideo.name.toLowerCase()}`);
+  };
+
   return (
     <>
       <SkeletonTheme baseColor="#202020" highlightColor="#2b2a2a">
@@ -105,7 +150,7 @@ export function DescricaoFilmeSct() {
             <div className="info-filme">
               <p>
                 {isLoading ? (
-                  <Skeleton className="classificationSkeleton" />
+                  <Skeleton count={2} />
                 ) : movie.adult ? (
                   `Classificação adulta | ${movie.release_date}`
                 ) : (
@@ -113,7 +158,7 @@ export function DescricaoFilmeSct() {
                 )}
               </p>
 
-              <p className="generos-filme">
+              <div className="generos-filme">
                 {movieGenres.map((genre, index) => (
                   <span key={index}>
                     {isLoading ? (
@@ -127,14 +172,14 @@ export function DescricaoFilmeSct() {
                 ))}
 
                 {isLoading ? (
-                  <Skeleton className="imdbSkeleton" />
+                  <Skeleton />
                 ) : (
-                  <p className="imdb">
-                    <span>IMBD </span>
-                    <span>{movie.vote_average}</span>
-                  </p>
+                  <div className="containerImdb">
+                    <span className="imdb">IMBD </span>
+                    <span className="voteAvg">{movie.vote_average}</span>
+                  </div>
                 )}
-              </p>
+              </div>
             </div>
 
             <div className="info-producao">
@@ -175,6 +220,18 @@ export function DescricaoFilmeSct() {
                 </>
               )}
             </div>
+
+            {isLoading ? (
+              <Skeleton
+                width={200}
+                height={50}
+                style={{ borderRadius: "0.8rem" }}
+              />
+            ) : playButtonRender ? (
+              <ButtonPlayerStream onClick={handlePlayButtonClick}>
+                <Play size={35} /> Assistir
+              </ButtonPlayerStream>
+            ) : null}
           </section>
         </InfoFilmeContainer>
         {movieIdTrailer !== undefined ? (
@@ -188,7 +245,7 @@ export function DescricaoFilmeSct() {
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
+                allowFullScreen
               ></iframe>
             )}
           </MidiaFilmeContainer>

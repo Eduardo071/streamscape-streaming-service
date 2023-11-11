@@ -87,31 +87,25 @@ export const InfoFilmeContainer = styled.section`
       gap: 1.4rem;
       color: #b9b9b9;
 
-      p:last-child {
+      .generos-filme {
         display: flex;
         align-items: center;
-
-        .imdbSkeleton {
-          width: 10rem;
-          margin-left: 2rem;
-        }
+      }
+      .containerImdb {
+        display: flex;
+        gap: 1rem;
         .imdb {
-          span:first-child {
-            font-weight: 700;
-            font-size: 1.2rem;
-            padding: 2px;
-            border-radius: 2px;
-            margin-left: 12px;
-            border: 1px solid #fff;
-            color: #fff;
-          }
+          font-weight: 700;
+          font-size: 1.2rem;
+          padding: 2px;
+          border-radius: 2px;
+          margin-left: 12px;
+          border: 1px solid #fff;
+          color: #fff;
+        }
 
-          span {
-            display: inline-block;
-            border: none;
-            margin-left: 8px;
-            font-weight: 700;
-          }
+        .voteAvg {
+          font-weight: 700;
         }
       }
     }
@@ -215,7 +209,7 @@ export const CollectionStreamsContainer = styled.section`
       border-radius: 1rem;
     }
 
-    .titleMovieCollectionSkeleton{
+    .titleMovieCollectionSkeleton {
       width: 15rem;
       height: 2rem;
     }
@@ -245,4 +239,25 @@ export const CollectionStreamsContainer = styled.section`
       font-weight: bold;
     }
   }
+`;
+
+export const ButtonPlayerStream = styled.button`
+  display: flex;
+  margin: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 20rem;
+  height: 5rem;
+  font-size: 2.5rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 0.8rem;
+  transition: 0.3s;
+
+  &:hover{
+    cursor: pointer;
+    scale: 1.05;
+  }
+
 `;
