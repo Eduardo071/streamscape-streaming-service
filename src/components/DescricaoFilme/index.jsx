@@ -14,6 +14,7 @@ import {
 import { api_key } from "../../api/API_KEY";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { Play } from "phosphor-react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export function DescricaoFilmeSct() {
   const [movie, setMovie] = useState([]);
@@ -119,9 +120,11 @@ export function DescricaoFilmeSct() {
               </>
             ) : movie.backdrop_path ? (
               <>
-                <img
+                <LazyLoadImage
+                  className="posterMovie"
                   src={`${post_path}${movie.backdrop_path}`}
                   alt="poster oficial do filme"
+                  effect="blur"
                 />
 
                 <h2>{movie.title}</h2>

@@ -43,7 +43,7 @@ export const InfoFilmeContainer = styled.section`
       }
     }
 
-    img {
+    .posterMovie {
       width: 80rem;
     }
 
