@@ -6,3 +6,4 @@ export const urlMovieSearchById = "https://api.themoviedb.org/3/movie/";
 export const urlSerieSearchById = "https://api.themoviedb.org/3/tv/";
 export const paramsBase =
   "?api_key=27e8eafdb55bf547a11c4cb1950560f3&language=pt-BR";
+export const basePathStreamPlayer = "https://drive.google.com/file/d"

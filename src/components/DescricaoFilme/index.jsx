@@ -37,21 +37,22 @@ export function DescricaoFilmeSct() {
       setStreamsWithVideo(data);
     };
     requestStreamVideo();
-
+  }, [movie]);
+  useEffect(() => {
     const thisStreamHasVideo = streamsWithVideo.some(
-      (stream) => stream.external_id,
+      (stream) => stream.external_id === movie.id
     );
-
+    console.log(thisStreamHasVideo);
     if (thisStreamHasVideo) {
       const streamWithContent = streamsWithVideo.find(
         (stream) => stream.external_id === movie.id,
       );
-      setStreamWithVideo(streamWithContent); //
+      setStreamWithVideo(streamWithContent);
       setPlayButtonRender(true);
     } else {
       setPlayButtonRender(false);
     }
-  }, [playButtonRender, streamsWithVideo, movie]);
+  }, [streamsWithVideo, movie]);
 
   useEffect(() => {
     const requestApiMovieId = async () => {
