@@ -9,6 +9,7 @@ import Serie from "./Serie";
 import Collection from "./Collection";
 import { Collections } from "./Collections";
 import { Player } from "./Player";
+import { AllStreams } from "./AllStreams";
 
 
 export default function AppRoutes() {
@@ -23,6 +24,7 @@ export default function AppRoutes() {
         <Route exact path="/movies/discover" element={<Filmes />} />
         <Route exact path="/series/discover" element={<Series />} />
         <Route exact path="/collections/discover" element={<Collections />} />
+        <Route exact path="/search/:termSearch" element={<AllStreams/>}/>
         {/* <Route exact path="/profile" element={<Profile />} /> */}
         <Route exact path="/planos" element={<Planos />} />
         <Route exact path="/play/:streamName" element={<Player/>}/>
